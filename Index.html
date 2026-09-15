@@ -1,2518 +1,314 @@
 <!DOCTYPE html>
 <html lang="hi">
-
 <head>
-  <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-  >
-
-  <meta name="theme-color" content="#c72d65">
-
-  <title>RADHA नाम काउंटर</title>
-
-  <!-- Fonts -->
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-  >
-
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;500;600;700&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap"
-    rel="stylesheet"
-  >
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      --pink: #c72d65;
-      --deep: #851641;
-      --gold: #c79a42;
-      --ink: #641b3a;
-      --soft: #fff7fb;
-    }
-
-    html,
-    body {
-      min-height: 100%;
-      font-family: "Noto Serif Devanagari", serif;
-    }
-
-    body {
-      min-height: 100vh;
-      min-height: 100svh;
-      padding: 18px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      overflow-x: hidden;
-
-      background:
-        radial-gradient(
-          circle at 50% 0,
-          #ffd7e6 0,
-          transparent 43%
-        ),
-        linear-gradient(
-          135deg,
-          #fffaf7,
-          #ffe9f1 52%,
-          #fff7ec
-        );
-
-      color: var(--ink);
-    }
-
-    body::before,
-    body::after {
-      position: fixed;
-      pointer-events: none;
-
-      color: #c79a4230;
-
-      font-size: clamp(70px, 15vw, 130px);
-    }
-
-    body::before {
-      content: "✦";
-      left: 3%;
-      top: 2%;
-    }
-
-    body::after {
-      content: "✦";
-      right: 3%;
-      bottom: 2%;
-    }
-
-    .app {
-      width: 100%;
-      max-width: 480px;
-
-      padding: clamp(22px, 6vw, 42px);
-
-      text-align: center;
-
-      border: 1px solid #ffffffdd;
-      border-radius: clamp(28px, 7vw, 42px);
-
-      background: #ffffffb8;
-
-      box-shadow:
-        0 25px 70px #7e1d4329,
-        inset 0 1px 0 #ffffffef;
-
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-    }
-
-    .om {
-      font:
-        clamp(30px, 9vw, 44px)
-        "Tiro Devanagari Hindi";
-
-      color: var(--gold);
-    }
-
-    .devotional {
-      font:
-        500 clamp(24px, 7vw, 36px)
-        "Tiro Devanagari Hindi";
-
-      color: var(--deep);
-    }
-
-    .title {
-      margin-top: 3px;
-
-      font:
-        bold clamp(38px, 11vw, 58px)
-        Georgia, serif;
-
-      letter-spacing: clamp(5px, 2vw, 10px);
-
-      color: var(--pink);
-
-      text-shadow:
-        0 4px 12px #c72d6529;
-    }
-
-    .subtitle {
-      margin-top: 6px;
-
-      font:
-        clamp(14px, 4vw, 18px)
-        "Tiro Devanagari Hindi";
-
-      color: #a4667d;
-    }
-
-    .counter-box {
-      margin:
-        clamp(23px, 7vw, 34px)
-        0
-        24px;
-
-      padding:
-        clamp(20px, 6vw, 30px)
-        15px;
-
-      border-radius: 30px;
-
-      background:
-        linear-gradient(
-          145deg,
-          #fffffff5,
-          #ffedf4e8
-        );
-
-      box-shadow:
-        inset 0 1px 10px #ffffffe8,
-        0 12px 30px #821e4610;
-    }
-
-    .label,
-    .caption {
-      font-family:
-        "Tiro Devanagari Hindi";
-
-      color: #a15b77;
-    }
-
-    .label {
-      font-size:
-        clamp(15px, 4vw, 18px);
-    }
-
-    #counter {
-      margin-top: 5px;
-
-      font:
-        bold clamp(64px, 18vw, 92px)
-        Georgia, serif;
-
-      line-height: 1;
-
-      color: var(--deep);
-
-      font-variant-numeric: tabular-nums;
-
-      transition:
-        transform .15s ease;
-    }
-
-    #counter.bump {
-      transform: scale(1.08);
-    }
-
-    .caption {
-      margin-top: 10px;
-
-      font-size:
-        clamp(15px, 4vw, 18px);
-    }
-
-    .radha {
-      width:
-        clamp(145px, 45vw, 190px);
-
-      height:
-        clamp(145px, 45vw, 190px);
-
-      margin: auto;
-
-      border-radius: 50%;
-
-      border:
-        clamp(5px, 1.5vw, 8px)
-        solid #ffffffe8;
-
-      background:
-        radial-gradient(
-          circle at 35% 25%,
-          #ffc3d7,
-          #e34b82 42%,
-          #b91f59
-        );
-
-      color: white;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      cursor: pointer;
-
-      font:
-        bold clamp(28px, 8vw, 38px)
-        Georgia, serif;
-
-      letter-spacing: 3px;
-
-      box-shadow:
-        0 18px 35px #a3194e47,
-        inset 0 5px 15px #ffffff59;
-
-      transition:
-        transform .12s ease,
-        box-shadow .2s ease;
-
-      -webkit-tap-highlight-color:
-        transparent;
-
-      user-select: none;
-
-      touch-action: manipulation;
-    }
-
-    .radha:active {
-      transform: scale(.92);
-    }
-
-    .radha.pulse {
-      animation:
-        radhaPulse .35s ease;
-    }
-
-    @keyframes radhaPulse {
-      0% {
-        transform: scale(1);
-      }
-
-      50% {
-        transform: scale(1.08);
-      }
-
-      100% {
-        transform: scale(1);
-      }
-    }
-
-    .voice {
-      margin-top: 27px;
-    }
-
-    .voice button {
-      width: 100%;
-
-      padding: 14px 18px;
-
-      border-radius: 18px;
-
-      border:
-        1px solid #c72d6533;
-
-      background:
-        #ffffffc7;
-
-      color: var(--deep);
-
-      font:
-        clamp(15px, 4vw, 17px)
-        "Noto Serif Devanagari";
-
-      cursor: pointer;
-
-      transition:
-        background .2s ease,
-        box-shadow .2s ease,
-        transform .1s ease;
-
-      touch-action: manipulation;
-    }
-
-    .voice button:active {
-      transform: scale(.98);
-    }
-
-    .voice button.listening {
-      background: #ffe0eb;
-
-      border-color: #df4f80;
-
-      box-shadow:
-        0 0 0 5px #df4f801a;
-    }
-
-    .status {
-      min-height: 42px;
-
-      margin-top: 9px;
-
-      font-size: 13px;
-
-      color: #9d6077;
-
-      line-height: 1.5;
-    }
-
-    .status.success {
-      color: #4b8b63;
-    }
-
-    .status.error {
-      color: #bd3c59;
-    }
-
-    .status.warning {
-      color: #aa7940;
-    }
-
-    .reset {
-      margin-top: 12px;
-
-      border: 0;
-
-      background: transparent;
-
-      color: #a56a80;
-
-      font:
-        14px
-        "Noto Serif Devanagari";
-
-      cursor: pointer;
-
-      text-decoration: underline;
-
-      text-underline-offset: 4px;
-    }
-
-    .footer {
-      margin-top: 22px;
-
-      font:
-        clamp(14px, 4vw, 17px)
-        "Tiro Devanagari Hindi";
-
-      color: #a15f77;
-    }
-
-    .footer span {
-      color: var(--gold);
-    }
-
-    @media(max-width:360px) {
-
-      body {
-        padding: 10px;
-      }
-
-      .app {
-        padding:
-          21px 16px;
-      }
-
-      .voice {
-        margin-top: 22px;
-      }
-    }
-
-    @media(max-height:650px)
-    and (orientation:landscape) {
-
-      body {
-        align-items: flex-start;
-      }
-
-      .app {
-        margin: 8px auto;
-        max-width: 650px;
-      }
-
-      .counter-box {
-        margin: 16px 0;
-      }
-
-      .radha {
-        width: 125px;
-        height: 125px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#0c0a09">
+    <title>Radha Naam Jaap</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'devanagari': ['"Noto Serif Devanagari"', 'serif'],
+                        'serif': ['Georgia', '"Times New Roman"', 'serif']
+                    },
+                    colors: {
+                        stone: {
+                            850: '#1c1917',
+                            900: '#151311',
+                            950: '#0c0a09',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Base optimizations */
+        * {
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        body {
+            background-color: #0c0a09;
+            overscroll-behavior: none;
+        }
+
+        /* Animations */
+        @keyframes ripple-effect {
+            0% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+            100% {
+                transform: scale(1.6);
+                opacity: 0;
+            }
+        }
+
+        .ripple {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 3px solid #f59e0b; /* Amber 500 */
+            animation: ripple-effect 0.7s ease-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes bump {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+            100% { transform: scale(1); }
+        }
+
+        .animate-bump {
+            animation: bump 0.15s ease-out;
+        }
+
+        /* Mic Pulse */
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(245, 158, 11, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+        }
+
+        .mic-listening {
+            animation: pulse-ring 2s infinite;
+            border-color: #f59e0b !important;
+            color: #fbbf24 !important;
+        }
+    </style>
 </head>
 
+<body class="min-h-[100dvh] w-full flex flex-col items-center justify-center bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-stone-800 to-stone-950 text-stone-200 overflow-hidden p-4">
 
-<body>
+    <!-- Meditative Header -->
+    <div class="text-amber-500 text-4xl md:text-5xl mb-2 font-devanagari drop-shadow-md">ॐ</div>
+    <h1 class="text-lg md:text-xl font-light tracking-[0.3em] text-stone-300 uppercase mb-8 text-center drop-shadow-sm">
+        Radha Naam Jaap
+    </h1>
 
-  <main class="app">
-
-    <div class="om">ॐ</div>
-
-    <div class="devotional">
-      श्री राधा नाम स्मरण
+    <!-- Counter Display -->
+    <div class="flex flex-col items-center mb-10 w-full max-w-sm">
+        <span class="text-xs text-stone-400 mb-2 tracking-[0.2em] uppercase font-medium">Today's Jaap</span>
+        <div 
+            id="counterDisplay" 
+            class="text-7xl md:text-8xl font-bold text-amber-500 tabular-nums drop-shadow-[0_0_20px_rgba(245,158,11,0.3)] transition-transform"
+        >
+            0
+        </div>
     </div>
 
-    <div class="title">
-      RADHA
-    </div>
-
-    <div class="subtitle">
-      प्रेम • भक्ति • स्मरण
-    </div>
-
-
-    <section class="counter-box">
-
-      <div class="label">
-        आज का जाप
-      </div>
-
-      <div
-        id="counter"
-        aria-live="polite"
-        aria-atomic="true"
-      >
-        0
-      </div>
-
-      <div class="caption">
-        राधे राधे 🙏
-      </div>
-
-    </section>
-
-
-    <button
-      class="radha"
-      id="radhaButton"
-      aria-label="Count RADHA"
-      type="button"
+    <!-- Main Tap Button -->
+    <button 
+        id="tapButton" 
+        class="relative group w-48 h-48 md:w-56 md:h-56 rounded-full bg-gradient-to-br from-stone-700 to-stone-900 border border-stone-600 shadow-[0_0_50px_rgba(0,0,0,0.6)] flex items-center justify-center active:scale-95 transition-all duration-200 outline-none select-none z-10"
+        aria-label="Tap to count Radha"
     >
-      RADHA
+        <!-- Static outer glow ring -->
+        <div class="absolute inset-0 rounded-full ring-4 ring-amber-600/10 group-active:ring-amber-500/30 transition-all duration-200 pointer-events-none"></div>
+        
+        <span class="text-3xl md:text-4xl font-serif text-amber-400/90 tracking-widest drop-shadow-md z-20 pointer-events-none">RADHA</span>
+        
+        <!-- Container for dynamically injected ripples -->
+        <div id="rippleContainer" class="absolute inset-0 rounded-full pointer-events-none z-0"></div>
     </button>
 
-
-    <section class="voice">
-
-      <button
-        id="voiceButton"
-        type="button"
-        aria-pressed="false"
-      >
-        🎙️ आवाज़ से RADHA गिनें
-      </button>
-
-      <div
-        class="status"
-        id="status"
-        aria-live="polite"
-      >
-        बटन दबाकर माइक्रोफ़ोन शुरू करें।
-      </div>
-
-    </section>
-
-
-    <button
-      class="reset"
-      id="resetButton"
-      type="button"
-    >
-      ↻ गिनती रीसेट करें
-    </button>
-
-
-    <div class="footer">
-      <span>राधे राधे</span>
-      • हर नाम में प्रेम
+    <!-- Voice Detection Toggle -->
+    <div class="mt-12 flex flex-col items-center w-full">
+        <button 
+            id="voiceToggle" 
+            class="flex items-center justify-center gap-3 w-64 px-6 py-3.5 rounded-full bg-stone-800/80 border border-stone-700 text-stone-300 hover:bg-stone-800 hover:text-amber-400 hover:border-stone-500 transition-all shadow-lg outline-none"
+        >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
+            </svg>
+            <span id="voiceText" class="text-sm font-medium tracking-wide">Start Voice Jaap</span>
+        </button>
+        <div id="statusText" class="mt-4 text-xs text-stone-500 font-medium h-4 text-center">
+            Tap the microphone to chant continuously
+        </div>
     </div>
 
-  </main>
-
-
-  <script>
-    "use strict";
-
-
-    /* =========================================================
-       RADHA NAME COUNTER
-       Robust Speech Recognition Edition
-       ========================================================= */
-
-
-    /* ---------------------------------------------------------
-       DOM
-       --------------------------------------------------------- */
-
-    const counterEl =
-      document.getElementById("counter");
-
-    const radhaButton =
-      document.getElementById("radhaButton");
-
-    const resetButton =
-      document.getElementById("resetButton");
-
-    const voiceButton =
-      document.getElementById("voiceButton");
-
-    const statusEl =
-      document.getElementById("status");
-
-
-    /* ---------------------------------------------------------
-       Speech Recognition
-       --------------------------------------------------------- */
-
-    const SpeechRecognition =
-      window.SpeechRecognition ||
-      window.webkitSpeechRecognition;
-
-
-    /* ---------------------------------------------------------
-       Application State
-       --------------------------------------------------------- */
-
-    let count = loadCount();
-
-    let recognition = null;
-
-    let listening = false;
-
-    let userWantsVoice = false;
-
-    let manuallyStopped = false;
-
-    let restartTimer = null;
-
-    let restartAttempts = 0;
-
-    let lastCountAt = 0;
-
-    let lastTranscript = "";
-
-    let lastTranscriptAt = 0;
-
-    let processedResultIndexes =
-      new Set();
-
-    let pageHidden = false;
-
-
-    /* ---------------------------------------------------------
-       Configuration
-       --------------------------------------------------------- */
-
-    const CONFIG = {
-
-      /*
-       * Minimum time between two recognised RADHA counts.
-       *
-       * 900ms is deliberately lower than the original 1400ms.
-       * This allows faster chanting while still protecting
-       * against duplicate speech events.
-       */
-      minCountInterval: 900,
-
-
-      /*
-       * Same transcript protection.
-       */
-      duplicateTranscriptWindow: 1200,
-
-
-      /*
-       * Initial restart delay.
-       */
-      restartDelay: 500,
-
-
-      /*
-       * Maximum restart delay.
-       */
-      maxRestartDelay: 5000,
-
-
-      /*
-       * Maximum number of stored processed result indexes.
-       */
-      maxProcessedIndexes: 100,
-
-
-      /*
-       * Number of speech alternatives requested.
-       */
-      maxAlternatives: 5,
-
-
-      /*
-       * Recognition languages.
-       *
-       * We use Hindi first because the user may naturally
-       * pronounce "Radha" in Hindi.
-       */
-      languages: [
-        "hi-IN",
-        "en-IN"
-      ]
-
-    };
-
-
-    /* =========================================================
-       COUNTER
-       ========================================================= */
-
-
-    function loadCount() {
-
-      try {
-
-        const value =
-          localStorage.getItem(
-            "radhaCounter"
-          );
-
-        const parsed =
-          Number(value);
-
-        if (
-          Number.isFinite(parsed) &&
-          parsed >= 0
-        ) {
-          return Math.floor(parsed);
-        }
-
-      } catch (error) {
-
-        console.warn(
-          "localStorage read failed:",
-          error
-        );
-
-      }
-
-      return 0;
-    }
-
-
-    function saveCount() {
-
-      try {
-
-        localStorage.setItem(
-          "radhaCounter",
-          String(count)
-        );
-
-      } catch (error) {
-
-        console.warn(
-          "localStorage write failed:",
-          error
-        );
-
-      }
-    }
-
-
-    function updateCounter(
-      animate = true
-    ) {
-
-      counterEl.textContent =
-        count.toLocaleString("en-IN");
-
-      saveCount();
-
-
-      if (animate) {
-
-        counterEl.classList.remove(
-          "bump"
-        );
-
-        /*
-         * Force browser reflow so animation
-         * works even for consecutive counts.
-         */
-        void counterEl.offsetWidth;
-
-        counterEl.classList.add(
-          "bump"
-        );
-
-        setTimeout(() => {
-
-          counterEl.classList.remove(
-            "bump"
-          );
-
-        }, 180);
-
-      }
-
-    }
-
-
-    function addRadha(
-      source = "manual"
-    ) {
-
-      count++;
-
-      updateCounter(true);
-
-
-      /*
-       * Give the main button a small visual
-       * confirmation for both manual and voice counts.
-       */
-      if (source === "voice") {
-
-        radhaButton.classList.remove(
-          "pulse"
-        );
-
-        void radhaButton.offsetWidth;
-
-        radhaButton.classList.add(
-          "pulse"
-        );
-
-      }
-
-    }
-
-
-    /* ---------------------------------------------------------
-       Manual Counter
-       --------------------------------------------------------- */
-
-    radhaButton.addEventListener(
-      "click",
-      () => {
-
-        addRadha("manual");
-
-      }
-    );
-
-
-    /* ---------------------------------------------------------
-       Reset
-       --------------------------------------------------------- */
-
-    resetButton.addEventListener(
-      "click",
-      () => {
-
-        const confirmed =
-          window.confirm(
-            "क्या आप RADHA की गिनती रीसेट करना चाहते हैं?"
-          );
-
-        if (!confirmed) {
-          return;
-        }
-
-        count = 0;
-
-        updateCounter(false);
-
-        lastCountAt = 0;
-
-        lastTranscript = "";
-
-        lastTranscriptAt = 0;
-
-        setStatus(
-          "गिनती रीसेट हो गई।",
-          "success"
-        );
-
-      }
-    );
-
-
-    /* =========================================================
-       STATUS / UI
-       ========================================================= */
-
-
-    function setStatus(
-      message,
-      type = ""
-    ) {
-
-      statusEl.className =
-        "status" +
-        (type ? " " + type : "");
-
-      statusEl.innerHTML =
-        message;
-
-    }
-
-
-    function setVoiceUI(
-      active
-    ) {
-
-      listening = active;
-
-      voiceButton.classList.toggle(
-        "listening",
-        active
-      );
-
-      voiceButton.setAttribute(
-        "aria-pressed",
-        active ? "true" : "false"
-      );
-
-
-      if (active) {
-
-        voiceButton.textContent =
-          "🔴 सुन रहा हूँ... RADHA बोलें";
-
-      } else {
-
-        voiceButton.textContent =
-          "🎙️ आवाज़ से RADHA गिनें";
-
-      }
-
-    }
-
-
-    /* =========================================================
-       TEXT NORMALIZATION
-       ========================================================= */
-
-
-    function normalizeText(
-      text
-    ) {
-
-      if (!text) {
-        return "";
-      }
-
-
-      return String(text)
-
-        /*
-         * Unicode normalization.
-         */
-        .normalize("NFKC")
-
-        /*
-         * Lowercase.
-         */
-        .toLowerCase()
-
-        /*
-         * Remove punctuation.
-         */
-        .replace(
-          /[.,!?;:'"()[\]{}<>|/\\_\-+=*#@~`]/g,
-          " "
-        )
-
-        /*
-         * Collapse whitespace.
-         */
-        .replace(
-          /\s+/g,
-          " "
-        )
-
-        .trim();
-
-    }
-
-
-    /*
-     * Remove spaces from a phrase.
-     *
-     * Useful for recognition results such as:
-     *
-     * "रा धा"
-     * "ra dha"
-     * "r a d h a"
-     */
-    function compactText(
-      text
-    ) {
-
-      return normalizeText(text)
-        .replace(/\s+/g, "");
-
-    }
-
-
-    /* =========================================================
-       DEVANAGARI NORMALIZATION
-       ========================================================= */
-
-
-    function normalizeHindi(
-      text
-    ) {
-
-      return normalizeText(text)
-
-        /*
-         * Normalize common variants.
-         */
-        .replace(/राधा/g, "राधा")
-        .replace(/राधे/g, "राधे")
-        .replace(/राधाा/g, "राधा")
-
-        /*
-         * Remove Devanagari punctuation.
-         */
-        .replace(/[।॥]/g, " ")
-
-        .trim();
-
-    }
-
-
-    /* =========================================================
-       RADHA DETECTION
-       ========================================================= */
-
-
-    /*
-     * Exact/common Hindi forms.
-     */
-    const HINDI_RADHA_PATTERNS = [
-
-      "राधा",
-      "राधे",
-      "राधा जी",
-      "राधे जी",
-      "राधा नाम",
-      "श्री राधा",
-      "श्री राधे"
-
-    ];
-
-
-    /*
-     * Common English / phonetic spellings returned
-     * by speech recognition engines.
-     */
-    const ENGLISH_RADHA_PATTERNS = [
-
-      "radha",
-      "radhaa",
-      "radhaah",
-      "radhae",
-      "radhe",
-      "radheh",
-
-      "rada",
-      "radaa",
-
-      "ratha",
-      "rathaa",
-
-      "radha ji",
-      "radhe ji",
-
-      "radha name",
-      "shri radha",
-      "shree radha",
-
-      /*
-       * Common recognition mistakes.
-       */
-      "raddha",
-      "radda",
-      "raada",
-      "raadha",
-
-      "ra dha",
-      "raa dha",
-
-      "radh a",
-      "rad h a"
-
-    ];
-
-
-    /*
-     * Converts Roman spelling into a compact phonetic
-     * representation.
-     *
-     * This is intentionally NOT a general-purpose
-     * phonetic engine. It is tuned specifically for
-     * detecting "Radha".
-     */
-    function phoneticRadha(
-      text
-    ) {
-
-      let t =
-        normalizeText(text);
-
-
-      if (!t) {
-        return "";
-      }
-
-
-      /*
-       * Remove spaces.
-       */
-      t = t.replace(
-        /\s+/g,
-        ""
-      );
-
-
-      /*
-       * Common substitutions.
-       */
-      t = t
-
-        .replace(/ph/g, "f")
-
-        .replace(/dh/g, "d")
-
-        .replace(/th/g, "t")
-
-        .replace(/aa/g, "a")
-
-        .replace(/ee/g, "i")
-
-        .replace(/oo/g, "u")
-
-        /*
-         * Remove weak ending sounds.
-         */
-        .replace(/h+$/g, "")
-
-        /*
-         * Reduce repeated characters.
-         */
-        .replace(
-          /(.)\1+/g,
-          "$1"
-        );
-
-
-      return t;
-
-    }
-
-
-    /*
-     * Calculate Levenshtein distance.
-     *
-     * This lets us tolerate small speech recognition
-     * mistakes without accepting completely unrelated
-     * words.
-     */
-    function levenshtein(
-      a,
-      b
-    ) {
-
-      if (a === b) {
-        return 0;
-      }
-
-      if (!a) {
-        return b.length;
-      }
-
-      if (!b) {
-        return a.length;
-      }
-
-
-      const matrix =
-        Array.from(
-          {
-            length: b.length + 1
-          },
-          () =>
-            new Array(a.length + 1)
-        );
-
-
-      for (
-        let i = 0;
-        i <= b.length;
-        i++
-      ) {
-        matrix[i][0] = i;
-      }
-
-
-      for (
-        let j = 0;
-        j <= a.length;
-        j++
-      ) {
-        matrix[0][j] = j;
-      }
-
-
-      for (
-        let i = 1;
-        i <= b.length;
-        i++
-      ) {
-
-        for (
-          let j = 1;
-          j <= a.length;
-          j++
-        ) {
-
-          const cost =
-            b.charAt(i - 1) ===
-            a.charAt(j - 1)
-              ? 0
-              : 1;
-
-
-          matrix[i][j] =
-            Math.min(
-
-              matrix[i - 1][j] + 1,
-
-              matrix[i][j - 1] + 1,
-
-              matrix[i - 1][j - 1] + cost
-
-            );
-
-        }
-
-      }
-
-
-      return matrix[b.length][a.length];
-
-    }
-
-
-    /*
-     * Check a single English word.
-     */
-    function isRadhaEnglishWord(
-      word
-    ) {
-
-      if (!word) {
-        return false;
-      }
-
-
-      const clean =
-        phoneticRadha(word);
-
-
-      /*
-       * Very common exact variants.
-       */
-      if (
-        ENGLISH_RADHA_PATTERNS
-          .includes(
-            normalizeText(word)
-          )
-      ) {
-        return true;
-      }
-
-
-      /*
-       * Strong phonetic candidates.
-       */
-      const strongCandidates = [
-
-        "radha",
-        "radhe",
-        "rada",
-        "ratha",
-        "radda",
-        "raadha"
-
-      ];
-
-
-      /*
-       * Compare against known candidates.
-       */
-      for (
-        const candidate
-        of strongCandidates
-      ) {
-
-        const candidatePhonetic =
-          phoneticRadha(
-            candidate
-          );
-
-
-        const distance =
-          levenshtein(
-            clean,
-            candidatePhonetic
-          );
-
-
-        /*
-         * Allow only small errors.
-         *
-         * Short words need stricter matching.
-         */
-        const maxDistance =
-          clean.length <= 4
-            ? 1
-            : 2;
-
-
-        if (
-          distance <= maxDistance
-        ) {
-          return true;
-        }
-
-      }
-
-
-      /*
-       * Structural Radha pattern.
-       *
-       * r + a + d/t + a
-       */
-      if (
-        /^r+a+d+a+$/.test(clean) ||
-        /^r+a+d+h+a+$/.test(
-          normalizeText(word)
-        ) ||
-        /^r+a+t+h+a+$/.test(
-          normalizeText(word)
-        )
-      ) {
-        return true;
-      }
-
-
-      return false;
-
-    }
-
-
-    /*
-     * Detect Hindi.
-     */
-    function containsHindiRadha(
-      text
-    ) {
-
-      const normalized =
-        normalizeHindi(text);
-
-
-      if (!normalized) {
-        return false;
-      }
-
-
-      for (
-        const pattern
-        of HINDI_RADHA_PATTERNS
-      ) {
-
-        if (
-          normalized.includes(
-            pattern
-          )
-        ) {
-          return true;
-        }
-
-      }
-
-
-      /*
-       * Handle spaced Devanagari:
-       *
-       * रा धा
-       */
-      const compact =
-        compactText(normalized);
-
-
-      if (
-        compact.includes("राधा") ||
-        compact.includes("राधे")
-      ) {
-        return true;
-      }
-
-
-      return false;
-
-    }
-
-
-    /*
-     * Main detection function.
-     */
-    function containsRadha(
-      text
-    ) {
-
-      if (!text) {
-        return false;
-      }
-
-
-      /*
-       * Hindi detection first.
-       */
-      if (
-        containsHindiRadha(text)
-      ) {
-        return true;
-      }
-
-
-      const normalized =
-        normalizeText(text);
-
-
-      if (!normalized) {
-        return false;
-      }
-
-
-      /*
-       * Direct phrase checks.
-       */
-      for (
-        const pattern
-        of ENGLISH_RADHA_PATTERNS
-      ) {
-
-        if (
-          normalized.includes(
-            pattern
-          )
-        ) {
-
-          /*
-           * Avoid matching a tiny fragment
-           * inside a completely unrelated word.
-           */
-          if (
-            pattern.length >= 4
-          ) {
-            return true;
-          }
-
-        }
-
-      }
-
-
-      /*
-       * Word-by-word detection.
-       */
-      const words =
-        normalized.split(/\s+/);
-
-
-      for (
-        const word
-        of words
-      ) {
-
-        if (
-          isRadhaEnglishWord(word)
-        ) {
-          return true;
-        }
-
-      }
-
-
-      /*
-       * Handle speech recognition splitting
-       * "RA DHA" into two tokens.
-       */
-      for (
-        let i = 0;
-        i < words.length - 1;
-        i++
-      ) {
-
-        const combined =
-          words[i] +
-          words[i + 1];
-
-
-        if (
-          isRadhaEnglishWord(
-            combined
-          )
-        ) {
-          return true;
-        }
-
-      }
-
-
-      /*
-       * Final compact check.
-       */
-      const compact =
-        normalized.replace(
-          /\s+/g,
-          ""
-        );
-
-
-      if (
-        compact === "radha" ||
-        compact === "radhaa" ||
-        compact === "radhe" ||
-        compact === "rada" ||
-        compact === "ratha" ||
-        compact === "raddha"
-      ) {
-        return true;
-      }
-
-
-      return false;
-
-    }
-
-
-    /* =========================================================
-       DUPLICATE PROTECTION
-       ========================================================= */
-
-
-    function canCountTranscript(
-      transcript
-    ) {
-
-      const now =
-        Date.now();
-
-
-      /*
-       * Global minimum interval.
-       */
-      if (
-        now - lastCountAt <
-        CONFIG.minCountInterval
-      ) {
-        return false;
-      }
-
-
-      const normalized =
-        normalizeText(
-          transcript
-        );
-
-
-      /*
-       * Same transcript returned twice
-       * by the browser.
-       */
-      if (
-        normalized &&
-        normalized === lastTranscript &&
-        now - lastTranscriptAt <
-          CONFIG.duplicateTranscriptWindow
-      ) {
-
-        return false;
-
-      }
-
-
-      lastTranscript =
-        normalized;
-
-      lastTranscriptAt =
-        now;
-
-
-      return true;
-
-    }
-
-
-    function countDetectedRadha(
-      transcript
-    ) {
-
-      if (
-        !canCountTranscript(
-          transcript
-        )
-      ) {
-        return;
-      }
-
-
-      lastCountAt =
-        Date.now();
-
-
-      addRadha("voice");
-
-
-      setStatus(
-        "✓ RADHA सुना गया — +1",
-        "success"
-      );
-
-    }
-
-
-    /* =========================================================
-       SPEECH RECOGNITION CREATION
-       ========================================================= */
-
-
-    function createRecognition(
-      language
-    ) {
-
-      if (!SpeechRecognition) {
-        return null;
-      }
-
-
-      const r =
-        new SpeechRecognition();
-
-
-      /*
-       * Language.
-       */
-      r.lang =
-        language;
-
-
-      /*
-       * Continuous mode allows the user to chant
-       * repeatedly without pressing the button.
-       */
-      r.continuous =
-        true;
-
-
-      /*
-       * We need final results for stable counting.
-       */
-      r.interimResults =
-        false;
-
-
-      /*
-       * Multiple alternatives dramatically improve
-       * recognition reliability.
-       */
-      try {
-
-        r.maxAlternatives =
-          CONFIG.maxAlternatives;
-
-      } catch (error) {
-
-        console.warn(
-          "maxAlternatives unsupported"
-        );
-
-      }
-
-
-      /*
-       * Start.
-       */
-      r.onstart =
-        () => {
-
-          restartAttempts = 0;
-
-          setVoiceUI(true);
-
-          setStatus(
-            language === "hi-IN"
-              ? "“राधा” बोलें — हर बार 1 गिना जाएगा।"
-              : "“RADHA” बोलें — हर बार 1 गिना जाएगा।",
-            ""
-          );
-
-        };
-
-
-      /*
-       * Results.
-       */
-      r.onresult =
-        event => {
-
-          for (
-            let i =
-              event.resultIndex;
-
-            i <
-              event.results.length;
-
-            i++
-          ) {
-
-            const result =
-              event.results[i];
-
-
-            /*
-             * Ignore interim results.
-             */
-            if (
-              !result.isFinal
-            ) {
-              continue;
+    <!-- Reset Data -->
+    <button id="resetButton" class="mt-8 text-xs text-stone-600 hover:text-stone-400 transition-colors py-2 px-4 uppercase tracking-widest outline-none">
+        Reset Counter
+    </button>
+
+    <script>
+        "use strict";
+
+        // --- DOM Elements ---
+        const counterDisplay = document.getElementById('counterDisplay');
+        const tapButton = document.getElementById('tapButton');
+        const rippleContainer = document.getElementById('rippleContainer');
+        const voiceToggle = document.getElementById('voiceToggle');
+        const voiceText = document.getElementById('voiceText');
+        const statusText = document.getElementById('statusText');
+        const resetButton = document.getElementById('resetButton');
+
+        // --- State ---
+        let count = parseInt(localStorage.getItem('radhaJaapCount') || '0', 10);
+        let isListening = false;
+        let recognition = null;
+        let sessionKeywordCount = 0; // Tracks occurrences per voice session to fix delay
+
+        // Init UI
+        updateCounterUI(false);
+
+        // --- Core Functions ---
+        function updateCounterUI(animate = true) {
+            counterDisplay.innerText = count.toLocaleString('en-IN');
+            localStorage.setItem('radhaJaapCount', count.toString());
+
+            if (animate) {
+                counterDisplay.classList.remove('animate-bump');
+                void counterDisplay.offsetWidth; // Trigger reflow
+                counterDisplay.classList.add('animate-bump');
             }
-
-
-            /*
-             * Avoid processing the same
-             * browser result again.
-             */
-            const resultKey =
-              `${language}:${i}:${result[0]?.transcript || ""}`;
-
-
-            if (
-              processedResultIndexes
-                .has(resultKey)
-            ) {
-              continue;
-            }
-
-
-            processedResultIndexes
-              .add(resultKey);
-
-
-            /*
-             * Keep memory bounded.
-             */
-            if (
-              processedResultIndexes.size >
-              CONFIG.maxProcessedIndexes
-            ) {
-
-              const first =
-                processedResultIndexes
-                  .values()
-                  .next()
-                  .value;
-
-              processedResultIndexes
-                .delete(first);
-
-            }
-
-
-            let detected =
-              false;
-
-            let matchedTranscript =
-              "";
-
-
-            /*
-             * Check every alternative.
-             *
-             * Android may place the correct interpretation
-             * in alternative #2/#3 rather than #1.
-             */
-            for (
-              let j = 0;
-              j < result.length;
-              j++
-            ) {
-
-              const transcript =
-                result[j]?.transcript ||
-                "";
-
-
-              console.log(
-                "[RADHA VOICE]",
-                language,
-                j,
-                transcript
-              );
-
-
-              if (
-                containsRadha(
-                  transcript
-                )
-              ) {
-
-                detected =
-                  true;
-
-                matchedTranscript =
-                  transcript;
-
-                break;
-
-              }
-
-            }
-
-
-            if (
-              detected
-            ) {
-
-              countDetectedRadha(
-                matchedTranscript
-              );
-
-            }
-
-          }
-
-        };
-
-
-      /*
-       * Error handling.
-       */
-      r.onerror =
-        event => {
-
-          const error =
-            event?.error ||
-            "unknown";
-
-
-          console.warn(
-            "[RADHA VOICE ERROR]",
-            language,
-            error
-          );
-
-
-          /*
-           * Permission denied.
-           */
-          if (
-            error === "not-allowed" ||
-            error ===
-              "service-not-allowed"
-          ) {
-
-            userWantsVoice =
-              false;
-
-            manuallyStopped =
-              true;
-
-            setVoiceUI(false);
-
-            setStatus(
-              "❌ Microphone permission नहीं मिली।<br>" +
-              "Browser settings में Microphone permission दें और फिर कोशिश करें।",
-              "error"
-            );
-
-            return;
-
-          }
-
-
-          /*
-           * No microphone.
-           */
-          if (
-            error === "audio-capture"
-          ) {
-
-            userWantsVoice =
-              false;
-
-            manuallyStopped =
-              true;
-
-            setVoiceUI(false);
-
-            setStatus(
-              "❌ Microphone उपलब्ध नहीं है।<br>" +
-              "Microphone permission और device microphone जाँचें।",
-              "error"
-            );
-
-            return;
-
-          }
-
-
-          /*
-           * Browser has no internet speech service.
-           *
-           * Some browsers expose this error even
-           * though the microphone itself works.
-           */
-          if (
-            error === "network"
-          ) {
-
-            setStatus(
-              "⚠️ Speech service/network समस्या। फिर से कोशिश की जा रही है...",
-              "warning"
-            );
-
-          }
-
-
-          /*
-           * No speech detected is NOT fatal.
-           */
-          if (
-            error === "no-speech"
-          ) {
-
-            setStatus(
-              "🎙️ सुन रहा हूँ... “RADHA” बोलें।"
-            );
-
-          }
-
-
-          /*
-           * Aborted is usually caused by restart/stop.
-           */
-          if (
-            error === "aborted"
-          ) {
-
-            /*
-             * Don't display an error.
-             */
-
-          }
-
-        };
-
-
-      /*
-       * Recognition ended.
-       */
-      r.onend =
-        () => {
-
-          setVoiceUI(false);
-
-
-          /*
-           * If user still wants voice recognition,
-           * restart automatically.
-           */
-          if (
-            userWantsVoice &&
-            !manuallyStopped &&
-            !pageHidden
-          ) {
-
-            scheduleRecognitionRestart();
-
-          } else {
-
-            setStatus(
-              "माइक्रोफ़ोन बंद है।"
-            );
-
-          }
-
-        };
-
-
-      return r;
-
-    }
-
-
-    /* =========================================================
-       RESTART ENGINE
-       ========================================================= */
-
-
-    function scheduleRecognitionRestart() {
-
-      clearTimeout(
-        restartTimer
-      );
-
-
-      if (
-        !userWantsVoice ||
-        manuallyStopped ||
-        pageHidden
-      ) {
-        return;
-      }
-
-
-      /*
-       * Exponential backoff:
-       *
-       * 500ms
-       * 1000ms
-       * 2000ms
-       * 4000ms
-       * 5000ms
-       */
-      const delay =
-        Math.min(
-
-          CONFIG.restartDelay *
-            Math.pow(
-              2,
-              restartAttempts
-            ),
-
-          CONFIG.maxRestartDelay
-
-        );
-
-
-      restartAttempts++;
-
-
-      restartTimer =
-        setTimeout(
-          () => {
-
-            restartRecognition();
-
-          },
-          delay
-        );
-
-    }
-
-
-    function restartRecognition() {
-
-      if (
-        !userWantsVoice ||
-        manuallyStopped ||
-        pageHidden
-      ) {
-        return;
-      }
-
-
-      /*
-       * Recreate recognition object.
-       *
-       * This is more reliable on Android Chrome
-       * than repeatedly calling start() on an old
-       * instance.
-       */
-      const language =
-        getCurrentLanguage();
-
-
-      recognition =
-        createRecognition(
-          language
-        );
-
-
-      if (!recognition) {
-        return;
-      }
-
-
-      try {
-
-        recognition.start();
-
-      } catch (error) {
-
-        console.warn(
-          "[RADHA RESTART]",
-          error
-        );
-
-        scheduleRecognitionRestart();
-
-      }
-
-    }
-
-
-    /* =========================================================
-       LANGUAGE STRATEGY
-       ========================================================= */
-
-
-    let languageIndex = 0;
-
-
-    function getCurrentLanguage() {
-
-      return CONFIG.languages[
-        languageIndex %
-        CONFIG.languages.length
-      ];
-
-    }
-
-
-    function rotateLanguage() {
-
-      languageIndex++;
-
-      return getCurrentLanguage();
-
-    }
-
-
-    /* =========================================================
-       START VOICE
-       ========================================================= */
-
-
-    function startVoice() {
-
-      if (!SpeechRecognition) {
-
-        setStatus(
-          "❌ इस browser में Voice Recognition उपलब्ध नहीं है।<br>" +
-          "Android Chrome या compatible browser इस्तेमाल करें।",
-          "error"
-        );
-
-        return;
-
-      }
-
-
-      /*
-       * file:// microphone support is unreliable.
-       */
-      if (
-        location.protocol === "file:"
-      ) {
-
-        setStatus(
-          "⚠️ Voice counting के लिए HTML को HTTPS या localhost पर चलाएँ।<br>" +
-          "Manual RADHA counter फिर भी काम करेगा।",
-          "warning"
-        );
-
-        return;
-
-      }
-
-
-      /*
-       * Reset state.
-       */
-      userWantsVoice =
-        true;
-
-      manuallyStopped =
-        false;
-
-      restartAttempts =
-        0;
-
-      processedResultIndexes
-        .clear();
-
-
-      clearTimeout(
-        restartTimer
-      );
-
-
-      /*
-       * Start with Hindi.
-       *
-       * If the recognition engine terminates,
-       * the next session switches language.
-       */
-      languageIndex = 0;
-
-
-      recognition =
-        createRecognition(
-          getCurrentLanguage()
-        );
-
-
-      if (!recognition) {
-
-        setStatus(
-          "❌ Voice Recognition शुरू नहीं हो सका।",
-          "error"
-        );
-
-        return;
-
-      }
-
-
-      try {
-
-        recognition.start();
-
-      } catch (error) {
-
-        console.warn(
-          "[RADHA START]",
-          error
-        );
-
-
-        /*
-         * InvalidStateError usually means that
-         * recognition is already running.
-         */
-        if (
-          error?.name ===
-          "InvalidStateError"
-        ) {
-
-          setVoiceUI(true);
-
-          return;
-
         }
 
-
-        /*
-         * Try again automatically.
-         */
-        setStatus(
-          "⚠️ Voice शुरू किया जा रहा है...",
-          "warning"
-        );
-
-
-        scheduleRecognitionRestart();
-
-      }
-
-    }
-
-
-    /* =========================================================
-       STOP VOICE
-       ========================================================= */
-
-
-    function stopVoice() {
-
-      userWantsVoice =
-        false;
-
-      manuallyStopped =
-        true;
-
-
-      clearTimeout(
-        restartTimer
-      );
-
-
-      restartTimer =
-        null;
-
-
-      if (recognition) {
-
-        try {
-
-          recognition.stop();
-
-        } catch (error) {
-
-          console.warn(
-            "[RADHA STOP]",
-            error
-          );
-
+        function triggerRipple() {
+            const ripple = document.createElement('div');
+            ripple.classList.add('ripple');
+            rippleContainer.appendChild(ripple);
+            
+            // Remove element after animation ends
+            setTimeout(() => {
+                ripple.remove();
+            }, 700);
         }
 
-      }
+        function handleJaap() {
+            count++;
+            updateCounterUI(true);
+            triggerRipple();
+        }
 
+        // --- Manual Interaction ---
+        tapButton.addEventListener('click', handleJaap);
 
-      setVoiceUI(false);
+        resetButton.addEventListener('click', () => {
+            if (confirm("Reset your Jaap counter to 0?")) {
+                count = 0;
+                updateCounterUI(false);
+            }
+        });
 
+        // --- Voice Recognition Logic (Real-time Fix) ---
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
-      setStatus(
-        "माइक्रोफ़ोन बंद है।"
-      );
-
-    }
-
-
-    /* =========================================================
-       VOICE BUTTON
-       ========================================================= */
-
-
-    voiceButton.addEventListener(
-      "click",
-      () => {
-
-        if (listening) {
-
-          stopVoice();
-
+        if (!SpeechRecognition) {
+            voiceToggle.style.display = 'none';
+            statusText.innerHTML = "Voice Jaap not supported in this browser. Please use Chrome/Edge.";
         } else {
+            recognition = new SpeechRecognition();
+            recognition.lang = 'hi-IN';
+            recognition.continuous = true;
+            recognition.interimResults = true; // Use interim for zero-delay counting!
 
-          startVoice();
+            recognition.onstart = () => {
+                isListening = true;
+                sessionKeywordCount = 0;
+                voiceToggle.classList.add('mic-listening');
+                voiceToggle.classList.replace('bg-stone-800/80', 'bg-stone-900');
+                voiceText.innerText = "Listening... Chant Radha";
+                statusText.innerHTML = "<span class='text-amber-500'>Continuous mode active.</span>";
+            };
 
+            recognition.onresult = (event) => {
+                let fullTranscript = "";
+                
+                // Combine all current results (interim and final)
+                for (let i = 0; i < event.results.length; i++) {
+                    fullTranscript += event.results[i][0].transcript + " ";
+                }
+
+                // Match instances of Radha/Radhe (English or Hindi)
+                const matches = fullTranscript.match(/(radha|radhe|राधा|राधे)/gi);
+                const currentTotalMatches = matches ? matches.length : 0;
+
+                // If new instances are found in this continuous buffer, increment instantly
+                if (currentTotalMatches > sessionKeywordCount) {
+                    const newJaaps = currentTotalMatches - sessionKeywordCount;
+                    for (let j = 0; j < newJaaps; j++) {
+                        handleJaap();
+                    }
+                    sessionKeywordCount = currentTotalMatches;
+                }
+            };
+
+            recognition.onerror = (event) => {
+                console.warn("Speech Recognition Error:", event.error);
+                if (event.error === 'not-allowed') {
+                    stopListening();
+                    statusText.innerHTML = "<span class='text-red-500'>Microphone access denied.</span>";
+                }
+            };
+
+            recognition.onend = () => {
+                // To maintain a truly continuous loop without delay, automatically restart 
+                // if the user hasn't explicitly stopped it.
+                if (isListening) {
+                    sessionKeywordCount = 0; // Reset session count for the fresh buffer
+                    try {
+                        recognition.start();
+                    } catch (e) {
+                        // In case of rapid restart failure
+                        setTimeout(() => { if (isListening) recognition.start(); }, 500);
+                    }
+                } else {
+                    voiceToggle.classList.remove('mic-listening');
+                    voiceToggle.classList.replace('bg-stone-900', 'bg-stone-800/80');
+                    voiceText.innerText = "Start Voice Jaap";
+                    statusText.innerText = "Microphone stopped.";
+                }
+            };
         }
 
-      }
-    );
+        function stopListening() {
+            isListening = false;
+            if (recognition) recognition.stop();
+        }
 
-
-    /* =========================================================
-       PAGE VISIBILITY
-       ========================================================= */
-
-
-    document.addEventListener(
-      "visibilitychange",
-      () => {
-
-        pageHidden =
-          document.hidden;
-
-
-        if (
-          pageHidden
-        ) {
-
-          /*
-           * Mobile browsers can kill microphone
-           * sessions when the tab goes into background.
-           */
-          if (
-            recognition &&
-            listening
-          ) {
-
-            try {
-
-              recognition.stop();
-
-            } catch (error) {
-
-              console.warn(
-                "Visibility stop:",
-                error
-              );
-
+        function startListening() {
+            if (recognition) {
+                try {
+                    recognition.start();
+                } catch (e) {
+                    console.log("Recognition already active");
+                }
             }
-
-          }
-
-          return;
-
         }
 
+        voiceToggle.addEventListener('click', () => {
+            if (isListening) {
+                stopListening();
+            } else {
+                statusText.innerText = "Initializing microphone...";
+                startListening();
+            }
+        });
 
-        /*
-         * User returns to page.
-         *
-         * Resume only if they had previously
-         * requested voice counting.
-         */
-        if (
-          !pageHidden &&
-          userWantsVoice &&
-          !listening
-        ) {
-
-          restartAttempts = 0;
-
-          scheduleRecognitionRestart();
-
-        }
-
-      }
-    );
-
-
-    /* =========================================================
-       WINDOW FOCUS RECOVERY
-       ========================================================= */
-
-
-    window.addEventListener(
-      "focus",
-      () => {
-
-        if (
-          userWantsVoice &&
-          !listening &&
-          !pageHidden
-        ) {
-
-          scheduleRecognitionRestart();
-
-        }
-
-      }
-    );
-
-
-    /* =========================================================
-       ONLINE / OFFLINE
-       ========================================================= */
-
-
-    window.addEventListener(
-      "online",
-      () => {
-
-        if (
-          userWantsVoice
-        ) {
-
-          setStatus(
-            "🌐 Network वापस आ गया। Voice recognition फिर शुरू किया जा रहा है...",
-            "success"
-          );
-
-
-          restartAttempts = 0;
-
-          scheduleRecognitionRestart();
-
-        }
-
-      }
-    );
-
-
-    window.addEventListener(
-      "offline",
-      () => {
-
-        if (
-          userWantsVoice
-        ) {
-
-          setStatus(
-            "⚠️ Internet connection नहीं है। Voice recognition फिर से online होने पर जारी होगा।",
-            "warning"
-          );
-
-        }
-
-      }
-    );
-
-
-    /* =========================================================
-       PAGE UNLOAD
-       ========================================================= */
-
-
-    window.addEventListener(
-      "beforeunload",
-      () => {
-
-        userWantsVoice =
-          false;
-
-        manuallyStopped =
-          true;
-
-        clearTimeout(
-          restartTimer
-        );
-
-      }
-    );
-
-
-    /* =========================================================
-       INITIALIZATION
-       ========================================================= */
-
-
-    updateCounter(false);
-
-
-    /*
-     * Browser support check.
-     */
-    if (!SpeechRecognition) {
-
-      setStatus(
-        "⚠️ इस browser में voice counting उपलब्ध नहीं है।<br>" +
-        "Android Chrome जैसे compatible browser में खोलें।",
-        "warning"
-      );
-
-    } else {
-
-      /*
-       * HTTPS check.
-       */
-      if (
-        location.protocol ===
-        "file:"
-      ) {
-
-        setStatus(
-          "⚠️ Manual counter तैयार है। Voice counting के लिए इसे HTTPS या localhost पर चलाएँ।",
-          "warning"
-        );
-
-      } else {
-
-        setStatus(
-          "बटन दबाकर माइक्रोफ़ोन शुरू करें।"
-        );
-
-      }
-
-    }
-
-  </script>
-
+        // Pause listening automatically if the page is hidden to save battery
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden && isListening) {
+                recognition.stop(); 
+            } else if (!document.hidden && isListening) {
+                startListening();
+            }
+        });
+    </script>
 </body>
-
 </html>
