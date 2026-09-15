@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>Room Booking</title>
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <style>
+        body {
+            background: #f4f7fb;
+            font-family: Arial, sans-serif;
+        }
+
+        .booking-container {
+            max-width: 900px;
+            margin: 30px auto;
+        }
+
+        .booking-card {
+            border: 0;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .booking-header {
+            background: linear-gradient(135deg, #0d6efd, #084298);
+            color: white;
+            padding: 28px;
+        }
+
+        .booking-header h2 {
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .booking-header p {
+            margin: 6px 0 0;
+            opacity: 0.9;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0d6efd;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+        }
+
+        .form-label {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .form-control,
+        .form-select {
+            min-height: 46px;
+            border-radius: 9px;
+        }
+
+        textarea.form-control {
+            min-height: 100px;
+        }
+
+        .required::after {
+            content: " *";
+            color: #dc3545;
+        }
+
+        .submit-btn {
+            min-height: 50px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .success-box {
+            display: none;
+            border-radius: 12px;
+        }
+
+        .error-box {
+            display: none;
+            border-radius: 12px;
+            white-space: pre-line;
+        }
+
+        .booking-id {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .loading-spinner {
+            display: none;
+        }
+
+        .footer-note {
+            text-align: center;
+            color: #6c757d;
+            font-size: 12px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container booking-container">
+
+    <div class="card booking-card">
+
+        <!-- HEADER -->
+        <div class="booking-header">
+            <h2>🏨 Room Booking</h2>
+            <p>Enter guest and booking details below</p>
+        </div>
+
+        <div class="card-body p-4 p-md-5">
+
+            <!-- SUCCESS -->
+            <div id="successBox"
+                 class="alert alert-success success-box mb-4">
+
+                <div class="fw-bold mb-2">
+                    Booking created successfully!
+                </div>
+
+                <div>Your Booking ID:</div>
+
+                <div id="successBookingId"
+                     class="booking-id mt-1"></div>
+
+                <button
+                    type="button"
+                    class="btn btn-sm btn-success mt-3"
+                    onclick="copyBookingId()">
+                    Copy Booking ID
+                </button>
+            </div>
+
+            <!-- ERROR -->
+            <div id="errorBox"
+                 class="alert alert-danger error-box mb-4">
+            </div>
+
+            <form id="bookingForm">
+
+                <!-- ========================= -->
+                <!-- GUEST DETAILS -->
+                <!-- ========================= -->
+
+                <div class="section-title">
+                    Guest Details
+                </div>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+                        <label class="form-label required">
+                            Guest Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="guestName"
+                            class="form-control"
+                            placeholder="Enter guest name"
+                            required>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label required">
+                            Mobile Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="mobileNumber"
+                            class="form-control"
+                            placeholder="Enter mobile number"
+                            maxlength="15"
+                            required>
+                    </div>
+
+                    <div class="col-md-12">
+                        <label class="form-label">
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            class="form-control"
+                            placeholder="Enter email address">
+                    </div>
+
+                </div>
+
+
+                <!-- ========================= -->
+                <!-- STAY DETAILS -->
+                <!-- ========================= -->
+
+                <div class="section-title mt-4">
+                    Stay Details
+                </div>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+                        <label class="form-label required">
+                            Check-in Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="checkInDate"
+                            class="form-control"
+                            required>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label required">
+                            Check-out Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="checkOutDate"
+                            class="form-control"
+                            required>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label required">
+                            Room Type
+                        </label>
+
+                        <select
+                            id="roomType"
+                            class="form-select"
+                            required>
+
+                            <option value="">
+                                Select room type
+                            </option>
+
+                            <option value="Standard">
+                                Standard
+                            </option>
+
+                            <option value="Deluxe">
+                                Deluxe
+                            </option>
+
+                            <option value="Super Deluxe">
+                                Super Deluxe
+                            </option>
+
+                            <option value="Suite">
+                                Suite
+                            </option>
+
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label required">
+                            Number of Rooms
+                        </label>
+
+                        <input
+                            type="number"
+                            id="numberOfRooms"
+                            class="form-control"
+                            value="1"
+                            min="1"
+                            required>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label required">
+                            Adults
+                        </label>
+
+                        <input
+                            type="number"
+                            id="adults"
+                            class="form-control"
+                            value="1"
+                            min="1"
+                            required>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">
+                            Children
+                        </label>
+
+                        <input
+                            type="number"
+                            id="children"
+                            class="form-control"
+                            value="0"
+                            min="0">
+                    </div>
+
+                </div>
+
+
+                <!-- ========================= -->
+                <!-- ID PROOF -->
+                <!-- ========================= -->
+
+                <div class="section-title mt-4">
+                    ID Proof
+                </div>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+                        <label class="form-label">
+                            ID Proof Type
+                        </label>
+
+                        <select
+                            id="idProofType"
+                            class="form-select">
+
+                            <option value="">
+                                Select ID proof
+                            </option>
+
+                            <option value="Aadhaar">
+                                Aadhaar
+                            </option>
+
+                            <option value="PAN Card">
+                                PAN Card
+                            </option>
+
+                            <option value="Passport">
+                                Passport
+                            </option>
+
+                            <option value="Driving License">
+                                Driving License
+                            </option>
+
+                            <option value="Voter ID">
+                                Voter ID
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">
+                            ID Proof Number
+                        </label>
+
+                        <input
+                            type="text"
+                            id="idProofNumber"
+                            class="form-control"
+                            placeholder="Enter ID number">
+                    </div>
+
+                    <div class="col-md-12">
+                        <label class="form-label">
+                            Address
+                        </label>
+
+                        <textarea
+                            id="address"
+                            class="form-control"
+                            placeholder="Enter guest address"></textarea>
+                    </div>
+
+                </div>
+
+
+                <!-- ========================= -->
+                <!-- PAYMENT -->
+                <!-- ========================= -->
+
+                <div class="section-title mt-4">
+                    Payment Details
+                </div>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+                        <label class="form-label required">
+                            Payment Amount
+                        </label>
+
+                        <input
+                            type="number"
+                            id="paymentAmount"
+                            class="form-control"
+                            placeholder="0.00"
+                            min="0"
+                            step="0.01"
+                            value="0"
+                            required>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">
+                            Payment Mode
+                        </label>
+
+                        <select
+                            id="paymentMode"
+                            class="form-select">
+
+                            <option value="">
+                                Select payment mode
+                            </option>
+
+                            <option value="Cash">
+                                Cash
+                            </option>
+
+                            <option value="UPI">
+                                UPI
+                            </option>
+
+                            <option value="Card">
+                                Card
+                            </option>
+
+                            <option value="Bank Transfer">
+                                Bank Transfer
+                            </option>
+
+                            <option value="Online">
+                                Online
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label required">
+                            Booking Status
+                        </label>
+
+                        <select
+                            id="bookingStatus"
+                            class="form-select"
+                            required>
+
+                            <option value="Pending">
+                                Pending
+                            </option>
+
+                            <option value="Confirmed">
+                                Confirmed
+                            </option>
+
+                            <option value="Cancelled">
+                                Cancelled
+                            </option>
+
+                            <option value="Completed">
+                                Completed
+                            </option>
+
+                        </select>
+                    </div>
+
+                </div>
+
+
+                <!-- ========================= -->
+                <!-- ADDITIONAL -->
+                <!-- ========================= -->
+
+                <div class="section-title mt-4">
+                    Additional Information
+                </div>
+
+                <div class="row g-3">
+
+                    <div class="col-md-12">
+                        <label class="form-label">
+                            Special Request
+                        </label>
+
+                        <textarea
+                            id="specialRequest"
+                            class="form-control"
+                            placeholder="Any special request from the guest?"></textarea>
+                    </div>
+
+                </div>
+
+
+                <!-- ========================= -->
+                <!-- SUBMIT -->
+                <!-- ========================= -->
+
+                <div class="mt-4">
+
+                    <button
+                        type="submit"
+                        id="submitBtn"
+                        class="btn btn-primary w-100 submit-btn">
+
+                        <span id="buttonText">
+                            Create Booking
+                        </span>
+
+                        <span
+                            id="loadingSpinner"
+                            class="spinner-border spinner-border-sm loading-spinner"
+                            role="status">
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+    <div class="footer-note">
+        Room Booking System
+    </div>
+
+</div>
+
+
+<script>
+
+/* ============================================================
+   SUPABASE CONFIGURATION
+   ============================================================ */
+
+const SUPABASE_URL =
+    "https://nxtxsjgyazpaidrsxmia.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_YVPDBCpsCfnqSCOxf9p7Sg_yRsCh71O";
+
+
+/* ============================================================
+   ELEMENTS
+   ============================================================ */
+
+const form = document.getElementById("bookingForm");
+
+const submitBtn =
+    document.getElementById("submitBtn");
+
+const buttonText =
+    document.getElementById("buttonText");
+
+const loadingSpinner =
+    document.getElementById("loadingSpinner");
+
+const successBox =
+    document.getElementById("successBox");
+
+const errorBox =
+    document.getElementById("errorBox");
+
+const successBookingId =
+    document.getElementById("successBookingId");
+
+
+/* ============================================================
+   DATE INITIALIZATION
+   ============================================================ */
+
+(function setDefaultDates() {
+
+    const today = new Date();
+
+    const tomorrow = new Date(today);
+
+    tomorrow.setDate(today.getDate() + 1);
+
+    document.getElementById("checkInDate").value =
+        formatDate(today);
+
+    document.getElementById("checkOutDate").value =
+        formatDate(tomorrow);
+
+})();
+
+
+function formatDate(date) {
+
+    const year = date.getFullYear();
+
+    const month =
+        String(date.getMonth() + 1).padStart(2, "0");
+
+    const day =
+        String(date.getDate()).padStart(2, "0");
+
+    return `${year}-${month}-${day}`;
+}
+
+
+/* ============================================================
+   BOOKING ID GENERATOR
+   ============================================================ */
+
+function generateBookingId() {
+
+    const now = new Date();
+
+    const year =
+        now.getFullYear();
+
+    const month =
+        String(now.getMonth() + 1).padStart(2, "0");
+
+    const day =
+        String(now.getDate()).padStart(2, "0");
+
+    const hours =
+        String(now.getHours()).padStart(2, "0");
+
+    const minutes =
+        String(now.getMinutes()).padStart(2, "0");
+
+    const seconds =
+        String(now.getSeconds()).padStart(2, "0");
+
+    const random =
+        Math.floor(100 + Math.random() * 900);
+
+    return `RB-${year}${month}${day}-${hours}${minutes}${seconds}-${random}`;
+}
+
+
+/* ============================================================
+   ERROR DISPLAY
+   ============================================================ */
+
+function showError(message) {
+
+    successBox.style.display = "none";
+
+    errorBox.textContent = message;
+
+    errorBox.style.display = "block";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+function hideMessages() {
+
+    successBox.style.display = "none";
+
+    errorBox.style.display = "none";
+
+    errorBox.textContent = "";
+}
+
+
+/* ============================================================
+   LOADING STATE
+   ============================================================ */
+
+function setLoading(isLoading) {
+
+    submitBtn.disabled = isLoading;
+
+    if (isLoading) {
+
+        buttonText.textContent =
+            "Creating Booking...";
+
+        loadingSpinner.style.display =
+            "inline-block";
+
+    } else {
+
+        buttonText.textContent =
+            "Create Booking";
+
+        loadingSpinner.style.display =
+            "none";
+    }
+}
+
+
+/* ============================================================
+   VALIDATION
+   ============================================================ */
+
+function validateForm() {
+
+    const guestName =
+        document.getElementById("guestName").value.trim();
+
+    const mobile =
+        document.getElementById("mobileNumber").value.trim();
+
+    const checkIn =
+        document.getElementById("checkInDate").value;
+
+    const checkOut =
+        document.getElementById("checkOutDate").value;
+
+    const roomType =
+        document.getElementById("roomType").value;
+
+    const rooms =
+        Number(document.getElementById("numberOfRooms").value);
+
+    const adults =
+        Number(document.getElementById("adults").value);
+
+    const children =
+        Number(document.getElementById("children").value);
+
+    const payment =
+        Number(document.getElementById("paymentAmount").value);
+
+
+    if (!guestName) {
+        return "Please enter guest name.";
+    }
+
+
+    if (!mobile) {
+        return "Please enter mobile number.";
+    }
+
+
+    /*
+       Allows Indian numbers such as:
+       9876543210
+       +919876543210
+       919876543210
+    */
+
+    const cleanMobile =
+        mobile.replace(/[\s\-()]/g, "");
+
+    if (!/^\+?\d{10,15}$/.test(cleanMobile)) {
+
+        return "Please enter a valid mobile number.";
+    }
+
+
+    if (!checkIn) {
+        return "Please select check-in date.";
+    }
+
+
+    if (!checkOut) {
+        return "Please select check-out date.";
+    }
+
+
+    if (checkOut <= checkIn) {
+
+        return "Check-out date must be after check-in date.";
+    }
+
+
+    if (!roomType) {
+
+        return "Please select room type.";
+    }
+
+
+    if (!Number.isInteger(rooms) || rooms < 1) {
+
+        return "Number of rooms must be at least 1.";
+    }
+
+
+    if (!Number.isInteger(adults) || adults < 1) {
+
+        return "Adults must be at least 1.";
+    }
+
+
+    if (!Number.isInteger(children) || children < 0) {
+
+        return "Children cannot be negative.";
+    }
+
+
+    if (!Number.isFinite(payment) || payment < 0) {
+
+        return "Payment amount cannot be negative.";
+    }
+
+
+    return null;
+}
+
+
+/* ============================================================
+   SUBMIT BOOKING
+   ============================================================ */
+
+form.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    hideMessages();
+
+
+    const validationError =
+        validateForm();
+
+    if (validationError) {
+
+        showError(validationError);
+
+        return;
+    }
+
+
+    setLoading(true);
+
+
+    try {
+
+        const bookingId =
+            generateBookingId();
+
+
+        const guestName =
+            document.getElementById("guestName")
+                .value
+                .trim();
+
+
+        const mobile =
+            document.getElementById("mobileNumber")
+                .value
+                .trim();
+
+
+        const email =
+            document.getElementById("email")
+                .value
+                .trim();
+
+
+        const checkIn =
+            document.getElementById("checkInDate")
+                .value;
+
+
+        const checkOut =
+            document.getElementById("checkOutDate")
+                .value;
+
+
+        const roomType =
+            document.getElementById("roomType")
+                .value;
+
+
+        const numberOfRooms =
+            Number(
+                document.getElementById("numberOfRooms")
+                    .value
+            );
+
+
+        const adults =
+            Number(
+                document.getElementById("adults")
+                    .value
+            );
+
+
+        const children =
+            Number(
+                document.getElementById("children")
+                    .value
+            );
+
+
+        const idProofType =
+            document.getElementById("idProofType")
+                .value;
+
+
+        const idProofNumber =
+            document.getElementById("idProofNumber")
+                .value
+                .trim();
+
+
+        const address =
+            document.getElementById("address")
+                .value
+                .trim();
+
+
+        const specialRequest =
+            document.getElementById("specialRequest")
+                .value
+                .trim();
+
+
+        const paymentAmount =
+            Number(
+                document.getElementById("paymentAmount")
+                    .value
+            );
+
+
+        const paymentMode =
+            document.getElementById("paymentMode")
+                .value;
+
+
+        const bookingStatus =
+            document.getElementById("bookingStatus")
+                .value;
+
+
+        /* ====================================================
+           SUPABASE PAYLOAD
+           ==================================================== */
+
+        const bookingData = {
+
+            booking_id: bookingId,
+
+            guest_name: guestName,
+
+            mobile_number: mobile,
+
+            email: email || null,
+
+            check_in_date: checkIn,
+
+            check_out_date: checkOut,
+
+            room_type: roomType,
+
+            number_of_rooms: numberOfRooms,
+
+            adults: adults,
+
+            children: children,
+
+            id_proof_type:
+                idProofType || null,
+
+            id_proof_number:
+                idProofNumber || null,
+
+            address:
+                address || null,
+
+            special_request:
+                specialRequest || null,
+
+            payment_amount:
+                paymentAmount,
+
+            payment_mode:
+                paymentMode || null,
+
+            booking_status:
+                bookingStatus
+
+        };
+
+
+        /* ====================================================
+           SUPABASE REST API REQUEST
+           ==================================================== */
+
+        const response = await fetch(
+            SUPABASE_URL +
+            "/rest/v1/room_bookings",
+            {
+
+                method: "POST",
+
+                headers: {
+
+                    "apikey":
+                        SUPABASE_PUBLISHABLE_KEY,
+
+                    "Authorization":
+                        "Bearer " +
+                        SUPABASE_PUBLISHABLE_KEY,
+
+                    "Content-Type":
+                        "application/json",
+
+                    "Prefer":
+                        "return=representation"
+
+                },
+
+                body:
+                    JSON.stringify(bookingData)
+
+            }
+        );
+
+
+        /* ====================================================
+           READ RESPONSE
+           ==================================================== */
+
+        const responseText =
+            await response.text();
+
+
+        let responseData = null;
+
+
+        try {
+
+            responseData =
+                responseText
+                    ? JSON.parse(responseText)
+                    : null;
+
+        } catch (parseError) {
+
+            responseData = null;
+        }
+
+
+        /* ====================================================
+           HANDLE ERROR
+           ==================================================== */
+
+        if (!response.ok) {
+
+            let errorMessage =
+                "Unable to create booking.";
+
+            if (responseData) {
+
+                if (responseData.message) {
+
+                    errorMessage =
+                        responseData.message;
+
+                } else if (responseData.error) {
+
+                    errorMessage =
+                        responseData.error;
+
+                } else if (responseData.hint) {
+
+                    errorMessage =
+                        responseData.hint;
+
+                } else if (responseData.details) {
+
+                    errorMessage =
+                        responseData.details;
+
+                }
+
+            } else if (responseText) {
+
+                errorMessage =
+                    responseText;
+            }
+
+
+            throw new Error(
+                `Supabase Error (${response.status}): ${errorMessage}`
+            );
+        }
+
+
+        /* ====================================================
+           SUCCESS
+           ==================================================== */
+
+        successBookingId.textContent =
+            bookingId;
+
+        successBox.style.display =
+            "block";
+
+        errorBox.style.display =
+            "none";
+
+
+        /*
+           Reset form after successful submission.
+        */
+
+        form.reset();
+
+
+        /*
+           Restore defaults.
+        */
+
+        document.getElementById("numberOfRooms")
+            .value = 1;
+
+        document.getElementById("adults")
+            .value = 1;
+
+        document.getElementById("children")
+            .value = 0;
+
+        document.getElementById("paymentAmount")
+            .value = 0;
+
+
+        const today =
+            new Date();
+
+        const tomorrow =
+            new Date(today);
+
+        tomorrow.setDate(
+            today.getDate() + 1
+        );
+
+
+        document.getElementById("checkInDate")
+            .value =
+            formatDate(today);
+
+
+        document.getElementById("checkOutDate")
+            .value =
+            formatDate(tomorrow);
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+
+    } catch (error) {
+
+        console.error(
+            "Booking submission error:",
+            error
+        );
+
+
+        let message =
+            "Booking could not be created.\n\n";
+
+
+        if (error && error.message) {
+
+            message +=
+                error.message;
+
+        } else {
+
+            message +=
+                "Unknown error occurred.";
+        }
+
+
+        /*
+           Helpful message for local file usage.
+        */
+
+        if (
+            error instanceof TypeError &&
+            String(error.message)
+                .toLowerCase()
+                .includes("fetch")
+        ) {
+
+            message +=
+                "\n\nIf you opened this HTML directly from your phone's file manager (file://), try opening it through a web server or hosting it online.";
+        }
+
+
+        showError(message);
+
+    } finally {
+
+        setLoading(false);
+    }
+
+});
+
+
+/* ============================================================
+   COPY BOOKING ID
+   ============================================================ */
+
+async function copyBookingId() {
+
+    const bookingId =
+        successBookingId.textContent.trim();
+
+
+    if (!bookingId) {
+        return;
+    }
+
+
+    try {
+
+        await navigator.clipboard.writeText(
+            bookingId
+        );
+
+
+        alert(
+            "Booking ID copied: " +
+            bookingId
+        );
+
+
+    } catch (error) {
+
+        /*
+           Fallback for browsers where
+           navigator.clipboard is unavailable.
+        */
+
+        const temp =
+            document.createElement("textarea");
+
+        temp.value = bookingId;
+
+        document.body.appendChild(temp);
+
+        temp.select();
+
+        document.execCommand("copy");
+
+        document.body.removeChild(temp);
+
+
+        alert(
+            "Booking ID copied: " +
+            bookingId
+        );
+    }
+}
+
+
+/* ============================================================
+   MOBILE NUMBER CLEANUP
+   ============================================================ */
+
+document.getElementById("mobileNumber")
+    .addEventListener("input", function() {
+
+        this.value =
+            this.value.replace(
+                /[^\d+\-\s()]/g,
+                ""
+            );
+
+    });
+
+
+/* ============================================================
+   PREVENT PAST CHECK-IN DATE
+   ============================================================ */
+
+(function setMinimumDate() {
+
+    const today =
+        formatDate(new Date());
+
+    document.getElementById("checkInDate")
+        .min = today;
+
+    document.getElementById("checkOutDate")
+        .min = today;
+
+})();
+
+
+/* ============================================================
+   AUTOMATIC CHECKOUT MINIMUM
+   ============================================================ */
+
+document.getElementById("checkInDate")
+    .addEventListener("change", function() {
+
+        const checkIn =
+            this.value;
+
+        const checkout =
+            document.getElementById("checkOutDate");
+
+
+        if (!checkIn) {
+            return;
+        }
+
+
+        const date =
+            new Date(checkIn + "T00:00:00");
+
+        date.setDate(
+            date.getDate() + 1
+        );
+
+
+        const minimumCheckout =
+            formatDate(date);
+
+
+        checkout.min =
+            minimumCheckout;
+
+
+        if (
+            !checkout.value ||
+            checkout.value <= checkIn
+        ) {
+
+            checkout.value =
+                minimumCheckout;
+        }
+
+    });
+
+
+/* ============================================================
+   CHECKOUT DATE VALIDATION
+   ============================================================ */
+
+document.getElementById("checkOutDate")
+    .addEventListener("change", function() {
+
+        const checkIn =
+            document.getElementById("checkInDate")
+                .value;
+
+        if (
+            checkIn &&
+            this.value &&
+            this.value <= checkIn
+        ) {
+
+            alert(
+                "Check-out date must be after check-in date."
+            );
+
+
+            const date =
+                new Date(
+                    checkIn + "T00:00:00"
+                );
+
+            date.setDate(
+                date.getDate() + 1
+            );
+
+
+            this.value =
+                formatDate(date);
+        }
+
+    });
+
+
+</script>
+
+</body>
+</html>
