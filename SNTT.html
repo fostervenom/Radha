@@ -1,0 +1,1939 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shri Naimishranya Tours & Travels | Sacred Pilgrim Stay & Yatra Services</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@300;400;500;600;700&family=Rozha+One&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        saffron: {
+                            DEFAULT: '#FF9933',
+                            50: '#fff8f0',
+                            100: '#ffeedb',
+                            500: '#ff9933',
+                            600: '#e67e17',
+                            700: '#bf5d06'
+                        },
+                        gold: {
+                            DEFAULT: '#D4AF37',
+                            light: '#f3e5ab',
+                            dark: '#aa820a'
+                        },
+                        sacred: {
+                            dark: '#0f0b18',
+                            purple: '#1a0d2a',
+                            maroon: '#2a0a12',
+                            card: 'rgba(25, 18, 38, 0.75)'
+                        }
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        rozha: ['Rozha One', 'serif'],
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #0d0814 0%, #170d28 40%, #260c18 100%);
+            background-attachment: fixed;
+            color: #f3f4f6;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .glass-panel {
+            background: rgba(26, 18, 38, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 175, 55, 0.22);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .glass-panel-gold {
+            background: rgba(42, 28, 15, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 153, 51, 0.4);
+            box-shadow: 0 8px 32px 0 rgba(255, 153, 51, 0.15);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 153, 51, 0.6);
+            box-shadow: 0 12px 30px rgba(255, 153, 51, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .gold-glow-text {
+            text-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+        }
+
+        .saffron-glow-btn {
+            background: linear-gradient(135deg, #FF9933 0%, #d97706 100%);
+            box-shadow: 0 4px 20px rgba(255, 153, 51, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .saffron-glow-btn:hover {
+            box-shadow: 0 6px 28px rgba(255, 153, 51, 0.7);
+            transform: translateY(-2px);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0d0814;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #FF9933;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
+        }
+
+        /* Diya pulse animation */
+        @keyframes flameGlow {
+            0%, 100% { opacity: 0.8; transform: scale(1); filter: drop-shadow(0 0 8px #FF9933); }
+            50% { opacity: 1; transform: scale(1.1); filter: drop-shadow(0 0 18px #ffcc00); }
+        }
+        .diya-flame {
+            animation: flameGlow 2s infinite ease-in-out;
+        }
+
+        /* Print receipt style */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #printableReceiptModal, #printableReceiptModal * {
+                visibility: visible;
+            }
+            #printableReceiptModal {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                color: #000;
+                background: #fff !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between relative">
+
+    <div id="toastContainer" class="fixed top-20 right-5 z-50 flex flex-col gap-3 pointer-events-none"></div>
+
+    <div id="langModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-md p-4 transition-opacity duration-300">
+        <div class="glass-panel-gold rounded-3xl p-6 md:p-8 max-w-3xl w-full text-center relative border border-gold/40 shadow-2xl max-h-[90vh] overflow-y-auto">
+            <div class="w-16 h-16 mx-auto mb-4 bg-saffron/20 rounded-full flex items-center justify-center border border-saffron">
+                <i class="fa-solid fa-om text-3xl text-saffron diya-flame"></i>
+            </div>
+            <h1 class="font-rozha text-2xl md:text-4xl text-saffron mb-2 gold-glow-text">Shri Naimishranya Tours & Travels</h1>
+            <p class="text-xs md:text-sm text-gold/90 mb-2 font-medium tracking-wide uppercase">धर्मो रक्षति रक्षितः | 88,000 ऋषियों की पावन तपोभूमि</p>
+            <p class="text-sm text-gray-300 mb-6">Select your preferred language to proceed with sacred pilgrimage bookings / अपनी भाषा चुनें:</p>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mb-6">
+                <button onclick="selectLanguage('hi')" class="glass-card hover:bg-saffron/20 border-saffron/30 p-3 rounded-xl flex flex-col items-center justify-center gap-1 group transition">
+                    <span class="text-lg font-bold text-saffron group-hover:scale-110 transition">हिंदी</span>
+                    <span class="text-xs text-gray-400">Hindi</span>
+                </button>
+                <button onclick="selectLanguage('en')" class="glass-card hover:bg-saffron/20 border-saffron/30 p-3 rounded-xl flex flex-col items-center justify-center gap-1 group transition">
+                    <span class="text-lg font-bold text-saffron group-hover:scale-110 transition">English</span>
+                    <span class="text-xs text-gray-400">English</span>
+                </button>
+                <button onclick="selectLanguage('sa')" class="glass-card hover:bg-saffron/20 border-saffron/30 p-3 rounded-xl flex flex-col items-center justify-center gap-1 group transition">
+                    <span class="text-lg font-bold text-saffron group-hover:scale-110 transition">संस्कृतम्</span>
+                    <span class="text-xs text-gray-400">Sanskrit</span>
+                </button>
+                <button onclick="selectLanguage('bn')" class="glass-card hover:bg-saffron/20 border-saffron/30 p-3 rounded-xl flex flex-col items-center justify-center gap-1 group transition">
+                    <span class="text-lg font-bold text-saffron group-hover:scale-110 transition">বাংলা</span>
+                    <span class="text-xs text-gray-400">Bengali</span>
+                </button>
+                <button onclick="selectLanguage('mr')" class="glass-card hover:bg-saffron/20 border-saffron/30 p-3 rounded-xl flex flex-col items-center justify-center gap-1 group transition">
+                    <span class="text-lg font-bold text-saffron group-hover:scale-110 transition">मराठी</span>
+                    <span class="text-xs text-gray-400">Marathi</span>
+                </button>
+                <button onclick="selectLanguage('te')" class="glass-card hover:bg-saffron/20 border-saffron/30 p-3 rounded-xl flex flex-col items-center justify-center gap-1 group transition">
+                    <span class="text-lg font-bold text-saffron group-hover:scale-110 transition">తెలుగు</span>
+                    <span class="text-xs text-gray-400">Telugu</span>
+                </button>
+                <button onclick="selectLanguage('ta')" class="glass-card hover:bg-saffron/20 border-saffron/30 p-3 rounded-xl flex flex-col items-center justify-center gap-1 group transition">
+                    <span class="text-lg font-bold text-saffron group-hover:scale-110 transition">தமிழ்</span>
+                    <span class="text-xs text-gray-400">Tamil</span>
+                </button>
+                <button onclick="selectLanguage('gu')" class="glass-card hover:bg-saffron/20 border-saffron/30 p-3 rounded-xl flex flex-col items-center justify-center gap-1 group transition">
+                    <span class="text-lg font-bold text-saffron group-hover:scale-110 transition">ગુજરાતી</span>
+                    <span class="text-xs text-gray-400">Gujarati</span>
+                </button>
+                <button onclick="selectLanguage('kn')" class="glass-card hover:bg-saffron/20 border-saffron/30 p-3 rounded-xl flex flex-col items-center justify-center gap-1 group transition">
+                    <span class="text-lg font-bold text-saffron group-hover:scale-110 transition">ಕನ್ನಡ</span>
+                    <span class="text-xs text-gray-400">Kannada</span>
+                </button>
+                <button onclick="selectLanguage('ml')" class="glass-card hover:bg-saffron/20 border-saffron/30 p-3 rounded-xl flex flex-col items-center justify-center gap-1 group transition">
+                    <span class="text-lg font-bold text-saffron group-hover:scale-110 transition">മലയാളം</span>
+                    <span class="text-xs text-gray-400">Malayalam</span>
+                </button>
+            </div>
+
+            <p class="text-xs text-gray-400">You can also change the language at any time from the top navigation menu.</p>
+        </div>
+    </div>
+
+    <header class="fixed top-0 left-0 right-0 z-40 glass-panel border-b border-gold/20 backdrop-blur-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Brand Logo & Title -->
+            <a href="#home" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 rounded-full bg-saffron/20 border border-saffron flex items-center justify-center group-hover:rotate-12 transition-transform">
+                    <i class="fa-solid fa-dharmachakra text-2xl text-saffron"></i>
+                </div>
+                <div>
+                    <span class="font-rozha text-lg md:text-xl text-saffron block leading-tight gold-glow-text" id="brandTitle">Shri Naimishranya Tours</span>
+                    <span class="text-[10px] md:text-xs text-gold/90 font-medium tracking-widest block uppercase" id="brandSlogan">धर्मो रक्षति रक्षितः</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links (Desktop) -->
+            <nav class="hidden lg:flex items-center gap-6 text-sm font-medium">
+                <a href="#home" class="hover:text-saffron transition flex items-center gap-1.5" id="navHome"><i class="fa-solid fa-house text-xs text-saffron"></i> Home</a>
+                <a href="#places" class="hover:text-saffron transition flex items-center gap-1.5" id="navPlaces"><i class="fa-solid fa-gopuram text-xs text-saffron"></i> Places to Visit</a>
+                <a href="#stay" class="hover:text-saffron transition flex items-center gap-1.5" id="navStay"><i class="fa-solid fa-hotel text-xs text-saffron"></i> Book Stay</a>
+                <a href="#travel" class="hover:text-saffron transition flex items-center gap-1.5" id="navTravel"><i class="fa-solid fa-route text-xs text-saffron"></i> Book Travel</a>
+                <a href="#social-ngo" class="hover:text-saffron transition flex items-center gap-1.5" id="navSocial"><i class="fa-solid fa-hand-holding-heart text-xs text-saffron"></i> NGO & Social Work</a>
+                <a href="#contact" class="hover:text-saffron transition flex items-center gap-1.5" id="navContact"><i class="fa-solid fa-envelope text-xs text-saffron"></i> Contact Us</a>
+            </nav>
+
+            <!-- Language Dropdown & Quick CTA -->
+            <div class="hidden sm:flex items-center gap-3">
+                <div class="relative">
+                    <select id="headerLangSelect" onchange="selectLanguage(this.value)" class="bg-sacred-dark/80 text-saffron text-xs border border-saffron/40 rounded-full px-3 py-1.5 focus:outline-none focus:border-saffron cursor-pointer font-medium">
+                        <option value="hi">हिंदी (Hindi)</option>
+                        <option value="en">English</option>
+                        <option value="sa">संस्कृतम् (Sanskrit)</option>
+                        <option value="bn">বাংলা (Bengali)</option>
+                        <option value="mr">मराठी (Marathi)</option>
+                        <option value="te">తెలుగు (Telugu)</option>
+                        <option value="ta">தமிழ் (Tamil)</option>
+                        <option value="gu">ગુજરાતી (Gujarati)</option>
+                        <option value="kn">ಕನ್ನಡ (Kannada)</option>
+                        <option value="ml">മലയാളം (Malayalam)</option>
+                    </select>
+                </div>
+                <a href="#stay" class="saffron-glow-btn text-sacred-dark text-xs font-bold px-4 py-2 rounded-full uppercase tracking-wider flex items-center gap-1" id="btnQuickBook">
+                    <i class="fa-solid fa-bolt"></i> Quick Book
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button onclick="toggleMobileMenu()" class="lg:hidden text-saffron text-2xl p-2 focus:outline-none">
+                <i class="fa-solid fa-bars" id="menuIcon"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobileMenu" class="hidden lg:hidden glass-panel border-t border-gold/20 px-4 pt-3 pb-6 flex flex-col gap-3 text-sm">
+            <a href="#home" onclick="toggleMobileMenu()" class="p-2 hover:bg-saffron/10 rounded-lg text-saffron"><i class="fa-solid fa-house mr-2"></i> Home</a>
+            <a href="#places" onclick="toggleMobileMenu()" class="p-2 hover:bg-saffron/10 rounded-lg"><i class="fa-solid fa-gopuram mr-2 text-saffron"></i> Places to Visit</a>
+            <a href="#stay" onclick="toggleMobileMenu()" class="p-2 hover:bg-saffron/10 rounded-lg"><i class="fa-solid fa-hotel mr-2 text-saffron"></i> Book Stay</a>
+            <a href="#travel" onclick="toggleMobileMenu()" class="p-2 hover:bg-saffron/10 rounded-lg"><i class="fa-solid fa-route mr-2 text-saffron"></i> Book Travel</a>
+            <a href="#social-ngo" onclick="toggleMobileMenu()" class="p-2 hover:bg-saffron/10 rounded-lg"><i class="fa-solid fa-hand-holding-heart mr-2 text-saffron"></i> NGO & Social Work</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="p-2 hover:bg-saffron/10 rounded-lg"><i class="fa-solid fa-envelope mr-2 text-saffron"></i> Contact Us</a>
+            <div class="mt-2 pt-2 border-t border-white/10 flex items-center justify-between">
+                <span class="text-xs text-gray-300">Language:</span>
+                <select onchange="selectLanguage(this.value)" class="bg-sacred-dark text-saffron text-xs border border-saffron/40 rounded-lg px-2 py-1">
+                    <option value="hi">हिंदी</option>
+                    <option value="en">English</option>
+                    <option value="sa">संस्कृतम्</option>
+                    <option value="bn">বাংলা</option>
+                    <option value="mr">मराठी</option>
+                    <option value="te">తెలుగు</option>
+                    <option value="ta">தமிழ்</option>
+                    <option value="gu">ગુજરાતી</option>
+                    <option value="kn">ಕನ್ನಡ</option>
+                    <option value="ml">മലയാളം</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-20">
+
+        <section id="home" class="relative min-h-[90vh] flex items-center justify-center px-4 py-16 overflow-hidden">
+            <!-- Background Glow FX -->
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-saffron/20 rounded-full blur-[120px] pointer-events-none"></div>
+            <div class="absolute bottom-10 right-10 w-80 h-80 bg-purple-900/30 rounded-full blur-[100px] pointer-events-none"></div>
+
+            <div class="max-w-5xl mx-auto text-center relative z-10 space-y-6">
+                <!-- Sacred Emblem -->
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-saffron/10 border border-saffron/30 text-saffron text-xs font-semibold uppercase tracking-widest mb-2">
+                    <i class="fa-solid fa-fire text-saffron diya-flame"></i>
+                    <span id="heroBadge">Land of 88,000 Holy Sages</span>
+                </div>
+
+                <h1 class="font-rozha text-3xl sm:text-5xl md:text-6xl text-white leading-tight gold-glow-text" id="heroTitle">
+                    Welcome to Sacred <span class="text-saffron">Naimisharanya Dham</span>
+                </h1>
+
+                <p class="text-base sm:text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed" id="heroSubtitle">
+                    Experience divine bliss at Chakra Tirtha, Vyas Gaddi, and Lalita Devi Shakti Peeth. We provide verified ashram stays, luxury pilgrim hotels, dedicated Vedic guides, and comfortable yatra travel.
+                </p>
+
+                <!-- Action CTA Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                    <a href="#stay" class="w-full sm:w-auto saffron-glow-btn text-sacred-dark text-base font-bold px-8 py-4 rounded-xl uppercase tracking-wider flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-hotel"></i> <span id="heroBtnStay">Book Sacred Stay</span>
+                    </a>
+                    <a href="#travel" class="w-full sm:w-auto glass-card hover:border-saffron text-white text-base font-semibold px-8 py-4 rounded-xl flex items-center justify-center gap-2 transition">
+                        <i class="fa-solid fa-van-shuttle text-saffron"></i> <span id="heroBtnTravel">Book Yatra Transport</span>
+                    </a>
+                </div>
+
+                <!-- Feature Badges Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-12 text-left">
+                    <div class="glass-card p-4 rounded-2xl flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-saffron/20 border border-saffron/40 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-building-circle-check text-saffron text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold text-white uppercase" id="feat1Title">Verified Ashrams</h4>
+                            <p class="text-[11px] text-gray-400" id="feat1Sub">Clean, authentic & peaceful</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-4 rounded-2xl flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-saffron/20 border border-saffron/40 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-handshake-angle text-saffron text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold text-white uppercase" id="feat2Title">Vedic Yatra Guides</h4>
+                            <p class="text-[11px] text-gray-400" id="feat2Sub">Expert local pandits</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-4 rounded-2xl flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-saffron/20 border border-saffron/40 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-shield-halved text-saffron text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold text-white uppercase" id="feat3Title">Razorpay Secure</h4>
+                            <p class="text-[11px] text-gray-400" id="feat3Sub">100% Instant confirmation</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-4 rounded-2xl flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-saffron/20 border border-saffron/40 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-headset text-saffron text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold text-white uppercase" id="feat4Title">24/7 Assistance</h4>
+                            <p class="text-[11px] text-gray-400" id="feat4Sub">Dedicated pilgrim support</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="places" class="py-16 px-4 max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-saffron font-bold text-xs uppercase tracking-widest block mb-1" id="secPlacesSub">Sacred Darshan Guide</span>
+                <h2 class="font-rozha text-3xl sm:text-4xl text-white gold-glow-text" id="secPlacesTitle">Places to Visit in Naimisharanya</h2>
+                <div class="w-24 h-1 bg-saffron mx-auto mt-3 rounded-full"></div>
+                <p class="text-gray-300 text-sm max-w-2xl mx-auto mt-3" id="secPlacesDesc">
+                    Click on any pilgrimage site to view detailed darshan history, optimal visiting hours, and book direct package options.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Place Card 1: Chakra Tirtha -->
+                <div class="glass-card rounded-2xl overflow-hidden group cursor-pointer" onclick="openPlaceModal('chakraTirtha')">
+                    <div class="h-48 bg-cover bg-center relative" style="background-image: url('https://images.unsplash.com/photo-1545128485-c400e7702796?auto=format&fit=crop&w=800&q=80');">
+                        <div class="absolute inset-0 bg-gradient-to-t from-sacred-dark via-sacred-dark/40 to-transparent"></div>
+                        <span class="absolute top-3 right-3 bg-saffron text-sacred-dark text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full">Most Sacred</span>
+                        <div class="absolute bottom-3 left-4 right-4">
+                            <h3 class="font-rozha text-xl text-saffron">Chakra Tirtha Kund</h3>
+                            <p class="text-xs text-gray-300 flex items-center gap-1"><i class="fa-solid fa-location-dot text-saffron"></i> Heart of Naimisharanya</p>
+                        </div>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <p class="text-xs text-gray-300 line-clamp-2">The holy circular water body created by Lord Vishnu's Sudarshana Chakra. Taking a dip here washes away all karmic sins.</p>
+                        <div class="flex items-center justify-between text-xs text-saffron font-semibold pt-2 border-t border-white/10">
+                            <span><i class="fa-regular fa-clock mr-1"></i> Open All Day (5 AM - 9 PM)</span>
+                            <span class="group-hover:translate-x-1 transition-transform">Explore <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Place Card 2: Maa Lalita Devi -->
+                <div class="glass-card rounded-2xl overflow-hidden group cursor-pointer" onclick="openPlaceModal('lalitaDevi')">
+                    <div class="h-48 bg-cover bg-center relative" style="background-image: url('https://images.unsplash.com/photo-1609766857041-ed402ea8069a?auto=format&fit=crop&w=800&q=80');">
+                        <div class="absolute inset-0 bg-gradient-to-t from-sacred-dark via-sacred-dark/40 to-transparent"></div>
+                        <span class="absolute top-3 right-3 bg-gold text-sacred-dark text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full">Shakti Peeth</span>
+                        <div class="absolute bottom-3 left-4 right-4">
+                            <h3 class="font-rozha text-xl text-saffron">Maa Lalita Devi Temple</h3>
+                            <p class="text-xs text-gray-300 flex items-center gap-1"><i class="fa-solid fa-location-dot text-saffron"></i> 1 Km from Chakra Tirtha</p>
+                        </div>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <p class="text-xs text-gray-300 line-clamp-2">One of the 51 sacred Shakti Peethas. Devotees offer red chunri and prayers to fulfill deep heart desires.</p>
+                        <div class="flex items-center justify-between text-xs text-saffron font-semibold pt-2 border-t border-white/10">
+                            <span><i class="fa-regular fa-clock mr-1"></i> 6:00 AM - 8:30 PM</span>
+                            <span class="group-hover:translate-x-1 transition-transform">Explore <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Place Card 3: Vyas Gaddi -->
+                <div class="glass-card rounded-2xl overflow-hidden group cursor-pointer" onclick="openPlaceModal('vyasGaddi')">
+                    <div class="h-48 bg-cover bg-center relative" style="background-image: url('https://images.unsplash.com/photo-1590077428593-a55bb07c4665?auto=format&fit=crop&w=800&q=80');">
+                        <div class="absolute inset-0 bg-gradient-to-t from-sacred-dark via-sacred-dark/40 to-transparent"></div>
+                        <span class="absolute top-3 right-3 bg-saffron text-sacred-dark text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full">Seat of Puranas</span>
+                        <div class="absolute bottom-3 left-4 right-4">
+                            <h3 class="font-rozha text-xl text-saffron">Vyas Gaddi</h3>
+                            <p class="text-xs text-gray-300 flex items-center gap-1"><i class="fa-solid fa-location-dot text-saffron"></i> Near Banyan Tree</p>
+                        </div>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <p class="text-xs text-gray-300 line-clamp-2">The venerable seat under an ancient banyan tree where Sage Ved Vyasa divided the 4 Vedas and compiled 18 Puranas.</p>
+                        <div class="flex items-center justify-between text-xs text-saffron font-semibold pt-2 border-t border-white/10">
+                            <span><i class="fa-regular fa-clock mr-1"></i> 6:00 AM - 7:00 PM</span>
+                            <span class="group-hover:translate-x-1 transition-transform">Explore <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Place Card 4: Hanuman Garhi & Pandav Kila -->
+                <div class="glass-card rounded-2xl overflow-hidden group cursor-pointer" onclick="openPlaceModal('hanumanGarhi')">
+                    <div class="h-48 bg-cover bg-center relative" style="background-image: url('https://images.unsplash.com/photo-1567157577867-05ccb1388e66?auto=format&fit=crop&w=800&q=80');">
+                        <div class="absolute inset-0 bg-gradient-to-t from-sacred-dark via-sacred-dark/40 to-transparent"></div>
+                        <div class="absolute bottom-3 left-4 right-4">
+                            <h3 class="font-rozha text-xl text-saffron">Hanuman Garhi & Pandav Kila</h3>
+                            <p class="text-xs text-gray-300 flex items-center gap-1"><i class="fa-solid fa-location-dot text-saffron"></i> High Hill Viewpoint</p>
+                        </div>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <p class="text-xs text-gray-300 line-clamp-2">Houses a massive idol of Lord Hanuman emerging from Patala Loka after rescuing Lord Rama and Lakshmana.</p>
+                        <div class="flex items-center justify-between text-xs text-saffron font-semibold pt-2 border-t border-white/10">
+                            <span><i class="fa-regular fa-clock mr-1"></i> 5:30 AM - 8:00 PM</span>
+                            <span class="group-hover:translate-x-1 transition-transform">Explore <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Place Card 5: Dashashwamedh Ghat & Gomti -->
+                <div class="glass-card rounded-2xl overflow-hidden group cursor-pointer" onclick="openPlaceModal('gomtiGhat')">
+                    <div class="h-48 bg-cover bg-center relative" style="background-image: url('https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=800&q=80');">
+                        <div class="absolute inset-0 bg-gradient-to-t from-sacred-dark via-sacred-dark/40 to-transparent"></div>
+                        <div class="absolute bottom-3 left-4 right-4">
+                            <h3 class="font-rozha text-xl text-saffron">Dashashwamedh Ghat & Gomti</h3>
+                            <p class="text-xs text-gray-300 flex items-center gap-1"><i class="fa-solid fa-location-dot text-saffron"></i> Gomti River Bank</p>
+                        </div>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <p class="text-xs text-gray-300 line-clamp-2">The site where Lord Rama performed the 10th Ashwamedha Yajna. Famous for peaceful evening Gomti Aarti.</p>
+                        <div class="flex items-center justify-between text-xs text-saffron font-semibold pt-2 border-t border-white/10">
+                            <span><i class="fa-regular fa-clock mr-1"></i> Aarti at 6:30 PM</span>
+                            <span class="group-hover:translate-x-1 transition-transform">Explore <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Place Card 6: Suta Gaddi -->
+                <div class="glass-card rounded-2xl overflow-hidden group cursor-pointer" onclick="openPlaceModal('sutaGaddi')">
+                    <div class="h-48 bg-cover bg-center relative" style="background-image: url('https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80');">
+                        <div class="absolute inset-0 bg-gradient-to-t from-sacred-dark via-sacred-dark/40 to-transparent"></div>
+                        <div class="absolute bottom-3 left-4 right-4">
+                            <h3 class="font-rozha text-xl text-saffron">Suta Gaddi & Devdeveshwar</h3>
+                            <p class="text-xs text-gray-300 flex items-center gap-1"><i class="fa-solid fa-location-dot text-saffron"></i> Ancient Assembly Spot</p>
+                        </div>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <p class="text-xs text-gray-300 line-clamp-2">Where Sage Suta Goswami recited the Shrimad Bhagavata Purana to 88,000 assembled sages.</p>
+                        <div class="flex items-center justify-between text-xs text-saffron font-semibold pt-2 border-t border-white/10">
+                            <span><i class="fa-regular fa-clock mr-1"></i> 6:00 AM - 7:30 PM</span>
+                            <span class="group-hover:translate-x-1 transition-transform">Explore <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Place Details Dynamic Modal -->
+        <div id="placeDetailsModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+            <div class="glass-panel-gold rounded-3xl max-w-2xl w-full p-6 md:p-8 relative max-h-[90vh] overflow-y-auto">
+                <button onclick="closePlaceModal()" class="absolute top-4 right-4 text-gray-400 hover:text-saffron text-2xl"><i class="fa-solid fa-xmark"></i></button>
+                <div id="modalPlaceContent">
+                    <!-- Populated dynamically via JS -->
+                </div>
+            </div>
+        </div>
+
+        <section id="stay" class="py-16 px-4 max-w-7xl mx-auto">
+            <div class="text-center mb-10">
+                <span class="text-saffron font-bold text-xs uppercase tracking-widest block mb-1">Pilgrim Accommodation</span>
+                <h2 class="font-rozha text-3xl sm:text-4xl text-white gold-glow-text" id="secStayTitle">Book Sacred Stay & Ashram Rooms</h2>
+                <div class="w-24 h-1 bg-saffron mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <!-- Prebuilt Packages Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <!-- Package 1 -->
+                <div class="glass-panel rounded-2xl p-6 relative flex flex-col justify-between border-saffron/30 hover:border-saffron transition">
+                    <div>
+                        <span class="bg-saffron/20 text-saffron border border-saffron/40 text-[10px] font-bold uppercase px-3 py-1 rounded-full inline-block mb-3">Popular Choice</span>
+                        <h3 class="font-rozha text-xl text-white mb-2">Chakra Tirtha Ashram Stay</h3>
+                        <p class="text-xs text-gray-300 mb-4">Peaceful ashram room within 200m of Chakra Tirtha. Includes sattvik morning tea & breakfast.</p>
+                        <ul class="text-xs text-gray-300 space-y-2 mb-6">
+                            <li><i class="fa-solid fa-check text-saffron mr-2"></i> Clean AC / Non-AC Rooms</li>
+                            <li><i class="fa-solid fa-check text-saffron mr-2"></i> 24/7 Hot Water & Power Backup</li>
+                            <li><i class="fa-solid fa-check text-saffron mr-2"></i> Temple Aarti Timing Guidance</li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-gray-400">Starts from</span>
+                            <div class="text-2xl font-bold text-saffron">₹1,199 <span class="text-xs text-gray-400 font-normal">/night</span></div>
+                        </div>
+                        <button onclick="prefillStay('Chakra Tirtha Ashram Stay', 'Ashram Cottage', 1199)" class="saffron-glow-btn text-sacred-dark text-xs font-bold px-4 py-2.5 rounded-xl">Book Now</button>
+                    </div>
+                </div>
+
+                <!-- Package 2 -->
+                <div class="glass-panel-gold rounded-2xl p-6 relative flex flex-col justify-between border-gold/50 shadow-lg">
+                    <span class="absolute -top-3 right-6 bg-gold text-sacred-dark text-[10px] font-extrabold uppercase px-3 py-1 rounded-full shadow">Best Luxury</span>
+                    <div>
+                        <span class="bg-gold/20 text-gold border border-gold/40 text-[10px] font-bold uppercase px-3 py-1 rounded-full inline-block mb-3">Heritage Experience</span>
+                        <h3 class="font-rozha text-xl text-saffron mb-2">Vipra Luxury Heritage Hotel</h3>
+                        <p class="text-xs text-gray-300 mb-4">Premium comfort hotel with traditional hospitality, attached restaurant & VIP car parking.</p>
+                        <ul class="text-xs text-gray-300 space-y-2 mb-6">
+                            <li><i class="fa-solid fa-check text-gold mr-2"></i> Deluxe AC Family Rooms</li>
+                            <li><i class="fa-solid fa-check text-gold mr-2"></i> Full Sattvik Thali Prasadam Included</li>
+                            <li><i class="fa-solid fa-check text-gold mr-2"></i> Free Railway Station Pickup</li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-gray-400">Starts from</span>
+                            <div class="text-2xl font-bold text-gold">₹3,499 <span class="text-xs text-gray-400 font-normal">/night</span></div>
+                        </div>
+                        <button onclick="prefillStay('Vipra Luxury Heritage Hotel', 'Deluxe Suite', 3499)" class="saffron-glow-btn text-sacred-dark text-xs font-bold px-4 py-2.5 rounded-xl">Book Now</button>
+                    </div>
+                </div>
+
+                <!-- Package 3 -->
+                <div class="glass-panel rounded-2xl p-6 relative flex flex-col justify-between border-saffron/30 hover:border-saffron transition">
+                    <div>
+                        <span class="bg-saffron/20 text-saffron border border-saffron/40 text-[10px] font-bold uppercase px-3 py-1 rounded-full inline-block mb-3">Family & Group</span>
+                        <h3 class="font-rozha text-xl text-white mb-2">Rishi Family Yatri Niwas</h3>
+                        <p class="text-xs text-gray-300 mb-4">Spacious multi-bed rooms designed for large family yatris with peaceful garden lawn.</p>
+                        <ul class="text-xs text-gray-300 space-y-2 mb-6">
+                            <li><i class="fa-solid fa-check text-saffron mr-2"></i> 4 to 6 Bedded Family Suites</li>
+                            <li><i class="fa-solid fa-check text-saffron mr-2"></i> Private Dining Hall Access</li>
+                            <li><i class="fa-solid fa-check text-saffron mr-2"></i> Near Lalita Devi Temple</li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-gray-400">Starts from</span>
+                            <div class="text-2xl font-bold text-saffron">₹2,199 <span class="text-xs text-gray-400 font-normal">/night</span></div>
+                        </div>
+                        <button onclick="prefillStay('Rishi Family Yatri Niwas', 'Family Room', 2199)" class="saffron-glow-btn text-sacred-dark text-xs font-bold px-4 py-2.5 rounded-xl">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Custom Stay Builder & Interactive Form -->
+            <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-saffron/30">
+                <h3 class="font-rozha text-2xl text-saffron mb-6 flex items-center gap-2">
+                    <i class="fa-solid fa-sliders text-xl"></i> Custom Stay Calculator & Booking
+                </h3>
+
+                <form id="stayBookingForm" onsubmit="handleStayPayment(event)" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <!-- Left Options -->
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Selected Package / Stay Name</label>
+                            <input type="text" id="stayPkgName" value="Custom Pilgrim Stay" class="w-full bg-sacred-dark/80 border border-saffron/40 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-saffron" readonly>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Room Category</label>
+                                <select id="stayRoomType" onchange="calculateStayTotal()" class="w-full bg-sacred-dark border border-saffron/40 rounded-xl px-3 py-2.5 text-sm text-saffron focus:outline-none">
+                                    <option value="1199">Standard AC Room (₹1,199/N)</option>
+                                    <option value="2199">Deluxe Family Room (₹2,199/N)</option>
+                                    <option value="3499">Sacred Heritage Cottage (₹3,499/N)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Number of Nights</label>
+                                <input type="number" id="stayNights" value="1" min="1" max="15" onchange="calculateStayTotal()" oninput="calculateStayTotal()" class="w-full bg-sacred-dark border border-saffron/40 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Guests Count</label>
+                                <input type="number" id="stayGuests" value="2" min="1" max="10" class="w-full bg-sacred-dark border border-saffron/40 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Check-in Date</label>
+                                <input type="date" id="stayCheckin" required class="w-full bg-sacred-dark border border-saffron/40 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none">
+                            </div>
+                        </div>
+
+                        <!-- Addons Checkboxes -->
+                        <div class="pt-2">
+                            <span class="block text-xs font-semibold text-saffron mb-2">Sacred Addon Services:</span>
+                            <div class="space-y-2">
+                                <label class="flex items-center gap-2 text-xs text-gray-300 cursor-pointer">
+                                    <input type="checkbox" id="addonMeals" onchange="calculateStayTotal()" class="accent-saffron">
+                                    Pure Sattvik Food & Prasadam (₹350 / person / day)
+                                </label>
+                                <label class="flex items-center gap-2 text-xs text-gray-300 cursor-pointer">
+                                    <input type="checkbox" id="addonVipDarshan" onchange="calculateStayTotal()" class="accent-saffron">
+                                    VIP Temple Darshan & Priest Escort (₹500 flat)
+                                </label>
+                                <label class="flex items-center gap-2 text-xs text-gray-300 cursor-pointer">
+                                    <input type="checkbox" id="addonPickup" onchange="calculateStayTotal()" class="accent-saffron">
+                                    Sitapur Railway Station Pickup & Drop (₹800 flat)
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Personal Info & Checkout -->
+                    <div class="space-y-4 flex flex-col justify-between">
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Pilgrim Lead Name *</label>
+                                <input type="text" id="stayLeadName" required placeholder="e.g. Ramesh Chandra Sharma" class="w-full bg-sacred-dark border border-saffron/40 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-saffron">
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 mb-1">Phone Number *</label>
+                                    <input type="tel" id="stayPhone" required placeholder="+91 9876543210" class="w-full bg-sacred-dark border border-saffron/40 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 mb-1">Email ID</label>
+                                    <input type="email" id="stayEmail" placeholder="yatri@gmail.com" class="w-full bg-sacred-dark border border-saffron/40 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Special Requests / Elderly Assistance</label>
+                                <textarea id="stayNotes" rows="2" placeholder="e.g. Ground floor room required for elderly parents" class="w-full bg-sacred-dark border border-saffron/40 rounded-xl px-4 py-2 text-xs text-white focus:outline-none"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Price calculation summary card -->
+                        <div class="glass-card p-4 rounded-2xl border-saffron/40 space-y-3">
+                            <div class="flex items-center justify-between text-xs text-gray-300">
+                                <span>Base Room Rate:</span>
+                                <span id="stayBasePriceDisplay">₹1,199</span>
+                            </div>
+                            <div class="flex items-center justify-between text-xs text-gray-300">
+                                <span>Selected Addons Total:</span>
+                                <span id="stayAddonPriceDisplay">₹0</span>
+                            </div>
+                            <div class="flex items-center justify-between text-base font-bold text-saffron pt-2 border-t border-white/10">
+                                <span>Total Payable Amount:</span>
+                                <span id="stayTotalPriceDisplay" class="text-2xl font-rozha gold-glow-text">₹1,199</span>
+                            </div>
+
+                            <button type="submit" class="w-full saffron-glow-btn text-sacred-dark text-sm font-bold py-3.5 rounded-xl uppercase tracking-wider flex items-center justify-center gap-2 mt-2">
+                                <i class="fa-solid fa-lock"></i> Pay Securely via Razorpay
+                            </button>
+                            <p class="text-[10px] text-center text-gray-400">Powered by Razorpay 256-bit SSL Gateway Simulation</p>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <section id="travel" class="py-16 px-4 max-w-7xl mx-auto">
+            <div class="text-center mb-10">
+                <span class="text-saffron font-bold text-xs uppercase tracking-widest block mb-1">Sacred Yatra Transport</span>
+                <h2 class="font-rozha text-3xl sm:text-4xl text-white gold-glow-text" id="secTravelTitle">Book Tour & Travel Packages</h2>
+                <div class="w-24 h-1 bg-saffron mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <!-- Prebuilt Travel Packages -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <!-- Travel Pkg 1 -->
+                <div class="glass-panel rounded-2xl p-6 flex flex-col justify-between border-saffron/30 hover:border-saffron transition">
+                    <div>
+                        <span class="bg-saffron/20 text-saffron border border-saffron/40 text-[10px] font-bold uppercase px-3 py-1 rounded-full inline-block mb-3">Same Day Yatra</span>
+                        <h3 class="font-rozha text-xl text-white mb-2">1-Day Naimish Express Tour</h3>
+                        <p class="text-xs text-gray-300 mb-4">Complete darshan of Chakra Tirtha, Lalita Devi, Vyas Gaddi, and Gomti Aarti in 1 day with private AC vehicle.</p>
+                        <ul class="text-xs text-gray-300 space-y-2 mb-6">
+                            <li><i class="fa-solid fa-check text-saffron mr-2"></i> AC Sedan / Ertiga Pickup</li>
+                            <li><i class="fa-solid fa-check text-saffron mr-2"></i> Local Pandit Guide Included</li>
+                            <li><i class="fa-solid fa-check text-saffron mr-2"></i> All Tolls & Parking Covered</li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-gray-400">Package Fare</span>
+                            <div class="text-2xl font-bold text-saffron">₹1,499 <span class="text-xs text-gray-400 font-normal">/car</span></div>
+                        </div>
+                        <button onclick="prefillTravel('1-Day Naimish Express Tour', 'AC Sedan', 1499)" class="saffron-glow-btn text-sacred-dark text-xs font-bold px-4 py-2.5 rounded-xl">Book Yatra</button>
+                    </div>
+                </div>
+
+                <!-- Travel Pkg 2 -->
+                <div class="glass-panel-gold rounded-2xl p-6 flex flex-col justify-between border-gold/50 shadow-lg">
+                    <div>
+                        <span class="bg-gold/20 text-gold border border-gold/40 text-[10px] font-bold uppercase px-3 py-1 rounded-full inline-block mb-3">Complete Dham Yatra</span>
+                        <h3 class="font-rozha text-xl text-saffron mb-2">3-Day Grand Holy Dham Yatra</h3>
+                        <p class="text-xs text-gray-300 mb-4">In-depth pilgrimage covering all 88,000 sage shrines, Misrikh Dadhichi Kund, and special Vedic Hawan ritual.</p>
+                        <ul class="text-xs text-gray-300 space-y-2 mb-6">
+                            <li><i class="fa-solid fa-check text-gold mr-2"></i> Dedicated AC Innova Crysta</li>
+                            <li><i class="fa-solid fa-check text-gold mr-2"></i> Full Sacred Ritual Samagri Kit</li>
+                            <li><i class="fa-solid fa-check text-gold mr-2"></i> Misrikh Dadhichi Kund Excursion</li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-gray-400">Package Fare</span>
+                            <div class="text-2xl font-bold text-gold">₹4,999 <span class="text-xs text-gray-400 font-normal">/tour</span></div>
+                        </div>
+                        <button onclick="prefillTravel('3-Day Grand Holy Dham Yatra', 'Innova SUV', 4999)" class="saffron-glow-btn text-sacred-dark text-xs font-bold px-4 py-2.5 rounded-xl">Book Yatra</button>
+                    </div>
+                </div>
+
+                <!-- Travel Pkg 3 -->
+                <div class="glass-panel rounded-2xl p-6 flex flex-col justify-between border-saffron/30 hover:border-saffron transition">
+                    <div>
+                        <span class="bg-saffron/20 text-saffron border border-saffron/40 text-[10px] font-bold uppercase px-3 py-1 rounded-full inline-block mb-3">Sacred Circuit</span>
+                        <h3 class="font-rozha text-xl text-white mb-2">Naimisharanya + Ayodhya Tour</h3>
+                        <p class="text-xs text-gray-300 mb-4">Combined pilgrimage connecting Naimisharanya Dham with Shri Ram Janmabhoomi Temple Ayodhya.</p>
+                        <ul class="text-xs text-gray-300 space-y-2 mb-6">
+                            <li><i class="fa-solid fa-check text-saffron mr-2"></i> Luxury Tempo Traveller / SUV</li>
+                            <li><i class="fa-solid fa-check text-saffron mr-2"></i> Lucknow Airport / Station Pick-Drop</li>
+                            <li><i class="fa-solid fa-check text-saffron mr-2"></i> Dedicated Tour Coordinator</li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-gray-400">Package Fare</span>
+                            <div class="text-2xl font-bold text-saffron">₹7,999 <span class="text-xs text-gray-400 font-normal">/group</span></div>
+                        </div>
+                        <button onclick="prefillTravel('Naimisharanya + Ayodhya Circuit', 'Tempo Traveller', 7999)" class="saffron-glow-btn text-sacred-dark text-xs font-bold px-4 py-2.5 rounded-xl">Book Yatra</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Custom Travel Form & Dynamic Price Calculator -->
+            <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-saffron/30">
+                <h3 class="font-rozha text-2xl text-saffron mb-6 flex items-center gap-2">
+                    <i class="fa-solid fa-car-side text-xl"></i> Custom Yatra Transport Builder
+                </h3>
+
+                <form id="travelBookingForm" onsubmit="handleTravelPayment(event)" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <!-- Left Options -->
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Selected Travel Package</label>
+                            <input type="text" id="travelPkgName" value="Custom Local Yatra" class="w-full bg-sacred-dark/80 border border-saffron/40 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none" readonly>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Vehicle Selection</label>
+                                <select id="travelVehicle" onchange="calculateTravelTotal()" class="w-full bg-sacred-dark border border-saffron/40 rounded-xl px-3 py-2.5 text-sm text-saffron focus:outline-none">
+                                    <option value="800">E-Rickshaw Local (₹800/day)</option>
+                                    <option value="1499">AC Swift Dzire (₹1,499/day)</option>
+                                    <option value="2800">AC Innova Crysta (₹2,800/day)</option>
+                                    <option value="4500">12-Seater Tempo Traveller (₹4,500/day)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Travel Date</label>
+                                <input type="date" id="travelDate" required class="w-full bg-sacred-dark border border-saffron/40 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none">
+                            </div>
+                        </div>
+
+                        <!-- Addons -->
+                        <div class="pt-2">
+                            <span class="block text-xs font-semibold text-saffron mb-2">Sacred Yatra Addons:</span>
+                            <div class="space-y-2">
+                                <label class="flex items-center gap-2 text-xs text-gray-300 cursor-pointer">
+                                    <input type="checkbox" id="travelAddonGuide" onchange="calculateTravelTotal()" class="accent-saffron">
+                                    Dedicated Learned Vedic Scholar/Pandit Guide (₹700)
+                                </label>
+                                <label class="flex items-center gap-2 text-xs text-gray-300 cursor-pointer">
+                                    <input type="checkbox" id="travelAddonPuja" onchange="calculateTravelTotal()" class="accent-saffron">
+                                    Sacred Puja Samagri & Archana Basket (₹450)
+                                </label>
+                                <label class="flex items-center gap-2 text-xs text-gray-300 cursor-pointer">
+                                    <input type="checkbox" id="travelAddonBoat" onchange="calculateTravelTotal()" class="accent-saffron">
+                                    Private Holy Gomti River Boat Ride Voucher (₹300)
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Lead Details -->
+                    <div class="space-y-4 flex flex-col justify-between">
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Yatri Name *</label>
+                                <input type="text" id="travelLeadName" required placeholder="e.g. Anjali Srivastava" class="w-full bg-sacred-dark border border-saffron/40 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none">
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 mb-1">Mobile No *</label>
+                                    <input type="tel" id="travelPhone" required placeholder="+91 9876543210" class="w-full bg-sacred-dark border border-saffron/40 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 mb-1">Pickup Location</label>
+                                    <input type="text" id="travelPickupLoc" placeholder="e.g. Sitapur Cantt / Naimish Hotel" class="w-full bg-sacred-dark border border-saffron/40 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Price calculation summary card -->
+                        <div class="glass-card p-4 rounded-2xl border-saffron/40 space-y-3">
+                            <div class="flex items-center justify-between text-xs text-gray-300">
+                                <span>Vehicle Rate:</span>
+                                <span id="travelBasePriceDisplay">₹800</span>
+                            </div>
+                            <div class="flex items-center justify-between text-xs text-gray-300">
+                                <span>Addons Total:</span>
+                                <span id="travelAddonPriceDisplay">₹0</span>
+                            </div>
+                            <div class="flex items-center justify-between text-base font-bold text-saffron pt-2 border-t border-white/10">
+                                <span>Total Yatra Fare:</span>
+                                <span id="travelTotalPriceDisplay" class="text-2xl font-rozha gold-glow-text">₹800</span>
+                            </div>
+
+                            <button type="submit" class="w-full saffron-glow-btn text-sacred-dark text-sm font-bold py-3.5 rounded-xl uppercase tracking-wider flex items-center justify-center gap-2 mt-2">
+                                <i class="fa-solid fa-lock"></i> Pay via Razorpay & Download Ticket
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </section>
+
+        <section id="social-ngo" class="py-16 px-4 max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-saffron font-bold text-xs uppercase tracking-widest block mb-1">Community & Devotion</span>
+                <h2 class="font-rozha text-3xl sm:text-4xl text-white gold-glow-text" id="secSocialTitle">Social Activities & NGO Initiatives</h2>
+                <div class="w-24 h-1 bg-saffron mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+
+                <!-- Left Column: Instagram Feed Integration (@anurag.cfg Mockup) -->
+                <div class="glass-panel rounded-3xl p-6 border-saffron/30 space-y-6">
+                    <div class="flex items-center justify-between pb-4 border-b border-white/10">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-full p-0.5 bg-gradient-to-tr from-yellow-500 via-red-500 to-purple-600">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Anurag Profile" class="w-full h-full object-cover rounded-full border-2 border-sacred-dark">
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm flex items-center gap-1">@anurag.cfg <i class="fa-solid fa-circle-check text-blue-400 text-xs"></i></h4>
+                                <p class="text-[11px] text-gray-400">Naimisharanya Yatra & Spiritual Visuals</p>
+                            </div>
+                        </div>
+                        <a href="https://instagram.com" target="_blank" class="bg-gradient-to-r from-purple-600 to-pink-600 text-white text-xs font-bold px-4 py-1.5 rounded-full hover:opacity-90 transition">
+                            <i class="fa-brands fa-instagram mr-1"></i> Follow
+                        </a>
+                    </div>
+
+                    <!-- Instagram Grid Mockup -->
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="relative rounded-xl overflow-hidden group aspect-square">
+                            <img src="https://images.unsplash.com/photo-1545128485-c400e7702796?auto=format&fit=crop&w=400&q=80" alt="Chakra Tirtha Post" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center gap-3 text-white text-xs font-bold">
+                                <span><i class="fa-solid fa-heart text-red-500"></i> 1.4k</span>
+                                <span><i class="fa-solid fa-comment"></i> 89</span>
+                            </div>
+                        </div>
+
+                        <div class="relative rounded-xl overflow-hidden group aspect-square">
+                            <img src="https://images.unsplash.com/photo-1609766857041-ed402ea8069a?auto=format&fit=crop&w=400&q=80" alt="Gomti Aarti Reel" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                            <span class="absolute top-2 right-2 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded-md"><i class="fa-solid fa-film"></i> Reel</span>
+                            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center gap-3 text-white text-xs font-bold">
+                                <span><i class="fa-solid fa-heart text-red-500"></i> 3.8k</span>
+                                <span><i class="fa-solid fa-comment"></i> 210</span>
+                            </div>
+                        </div>
+
+                        <div class="relative rounded-xl overflow-hidden group aspect-square">
+                            <img src="https://images.unsplash.com/photo-1590077428593-a55bb07c4665?auto=format&fit=crop&w=400&q=80" alt="Vyas Gaddi Post" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center gap-3 text-white text-xs font-bold">
+                                <span><i class="fa-solid fa-heart text-red-500"></i> 2.1k</span>
+                                <span><i class="fa-solid fa-comment"></i> 142</span>
+                            </div>
+                        </div>
+
+                        <div class="relative rounded-xl overflow-hidden group aspect-square">
+                            <img src="https://images.unsplash.com/photo-1567157577867-05ccb1388e66?auto=format&fit=crop&w=400&q=80" alt="Hanuman Garhi Post" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center gap-3 text-white text-xs font-bold">
+                                <span><i class="fa-solid fa-heart text-red-500"></i> 1.9k</span>
+                                <span><i class="fa-solid fa-comment"></i> 95</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://instagram.com" target="_blank" class="block text-center text-xs text-saffron hover:underline font-semibold">
+                        View More Stories & Daily Darshan Reels on Instagram @anurag.cfg <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    </a>
+                </div>
+
+                <!-- Right Column: NGO Shri Naimishranya Jan Kalyan Samiti -->
+                <div class="glass-panel-gold rounded-3xl p-6 sm:p-8 border-gold/40 space-y-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-12 h-12 rounded-full bg-saffron/20 border border-saffron flex items-center justify-center text-saffron text-2xl">
+                                <i class="fa-solid fa-hands-holding-child"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-rozha text-xl text-saffron">Shri Naimishranya Jan Kalyan Samiti</h3>
+                                <p class="text-xs text-gray-300">Registered Non-Profit NGO (Reg. No: UP/STP/2018/8800)</p>
+                            </div>
+                        </div>
+
+                        <p class="text-xs text-gray-300 leading-relaxed mb-6">
+                            Dedicated to serving pilgrims and preserving the sacred ecosystem of Naimisharanya Dham. Our volunteer network operates daily charitable initiatives for visiting yatris and local sadhus.
+                        </p>
+
+                        <div class="space-y-3">
+                            <div class="glass-card p-3 rounded-xl flex items-center gap-3">
+                                <i class="fa-solid fa-bowl-food text-saffron text-lg"></i>
+                                <div>
+                                    <h5 class="text-xs font-bold text-white">Daily Annadanam Bhandara</h5>
+                                    <p class="text-[11px] text-gray-400">Serving free sattvik hot meals to 500+ visiting sadhus & needy pilgrims daily.</p>
+                                </div>
+                            </div>
+
+                            <div class="glass-card p-3 rounded-xl flex items-center gap-3">
+                                <i class="fa-solid fa-cow text-gold text-lg"></i>
+                                <div>
+                                    <h5 class="text-xs font-bold text-white">Shri Gou Seva & Protection</h5>
+                                    <p class="text-[11px] text-gray-400">Shelter, green fodder, and medical care for homeless indigenous cows in Naimish Dham.</p>
+                                </div>
+                            </div>
+
+                            <div class="glass-card p-3 rounded-xl flex items-center gap-3">
+                                <i class="fa-solid fa-water text-blue-400 text-lg"></i>
+                                <div>
+                                    <h5 class="text-xs font-bold text-white">Clean Holy Gomti Campaign</h5>
+                                    <p class="text-[11px] text-gray-400">Weekly ghat cleaning drives and eco-friendly flower waste management.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center gap-4">
+                        <button onclick="openNgoDonateModal()" class="w-full sm:w-auto flex-1 saffron-glow-btn text-sacred-dark text-xs font-bold py-3 rounded-xl uppercase tracking-wider text-center">
+                            <i class="fa-solid fa-heart mr-1"></i> Donate / Contribute to NGO
+                        </button>
+                        <a href="#contact" class="w-full sm:w-auto text-xs text-gold border border-gold/40 px-4 py-3 rounded-xl hover:bg-gold/10 transition text-center">
+                            Become Volunteer
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- NGO Donation Modal -->
+        <div id="ngoDonateModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+            <div class="glass-panel-gold rounded-3xl max-w-md w-full p-6 relative">
+                <button onclick="closeNgoDonateModal()" class="absolute top-4 right-4 text-gray-400 hover:text-saffron text-2xl"><i class="fa-solid fa-xmark"></i></button>
+                <div class="text-center space-y-4">
+                    <div class="w-14 h-14 bg-saffron/20 border border-saffron rounded-full flex items-center justify-center mx-auto text-saffron text-2xl">
+                        <i class="fa-solid fa-hand-holding-heart"></i>
+                    </div>
+                    <h3 class="font-rozha text-2xl text-saffron">Support Jan Kalyan Samiti</h3>
+                    <p class="text-xs text-gray-300">Your sacred donation directly sponsors free meals for sadhus and cow protection in Naimisharanya.</p>
+                    
+                    <div class="grid grid-cols-3 gap-2 my-4">
+                        <button onclick="setNgoAmount(500)" class="glass-card py-2 text-xs font-bold text-saffron rounded-xl hover:bg-saffron/20">₹500</button>
+                        <button onclick="setNgoAmount(1100)" class="glass-card py-2 text-xs font-bold text-saffron rounded-xl hover:bg-saffron/20">₹1,100</button>
+                        <button onclick="setNgoAmount(2100)" class="glass-card py-2 text-xs font-bold text-saffron rounded-xl hover:bg-saffron/20">₹2,100</button>
+                    </div>
+
+                    <input type="number" id="ngoCustomAmount" value="1100" placeholder="Enter Amount in ₹" class="w-full bg-sacred-dark border border-saffron/40 rounded-xl px-4 py-2.5 text-center text-saffron font-bold text-lg focus:outline-none">
+
+                    <button onclick="processNgoDonation()" class="w-full saffron-glow-btn text-sacred-dark text-xs font-bold py-3.5 rounded-xl uppercase tracking-wider">
+                        Contribute Online via Razorpay
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <section id="contact" class="py-16 px-4 max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-saffron font-bold text-xs uppercase tracking-widest block mb-1">24/7 Assistance</span>
+                <h2 class="font-rozha text-3xl sm:text-4xl text-white gold-glow-text" id="secContactTitle">Contact Pilgrimage Office</h2>
+                <div class="w-24 h-1 bg-saffron mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Contact Form -->
+                <div class="glass-panel rounded-3xl p-6 sm:p-8 border-saffron/30 space-y-4">
+                    <h3 class="font-rozha text-xl text-saffron mb-2">Send Pilgrimage Inquiry</h3>
+                    <form onsubmit="handleContactSubmit(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Your Full Name</label>
+                            <input type="text" required placeholder="Shri Radhey Shyam" class="w-full bg-sacred-dark border border-saffron/40 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none">
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Phone / WhatsApp</label>
+                                <input type="tel" required placeholder="+91 9876543210" class="w-full bg-sacred-dark border border-saffron/40 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Expected Yatra Date</label>
+                                <input type="date" class="w-full bg-sacred-dark border border-saffron/40 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Inquiry / Travel Requirements</label>
+                            <textarea rows="3" placeholder="Tell us how many people are visiting and what services you need..." class="w-full bg-sacred-dark border border-saffron/40 rounded-xl px-4 py-2 text-xs text-white focus:outline-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full saffron-glow-btn text-sacred-dark text-xs font-bold py-3.5 rounded-xl uppercase tracking-wider">
+                            Submit Inquiry
+                        </button>
+                    </form>
+                </div>
+
+                <!-- POC Details & Map Card -->
+                <div class="glass-panel-gold rounded-3xl p-6 sm:p-8 border-gold/40 flex flex-col justify-between space-y-6">
+                    <div>
+                        <h3 class="font-rozha text-xl text-saffron mb-4">Shri Naimishranya Tours & Travels</h3>
+                        <div class="space-y-4 text-xs text-gray-300">
+                            <div class="flex items-start gap-3">
+                                <i class="fa-solid fa-location-dot text-saffron text-base mt-0.5"></i>
+                                <div>
+                                    <strong class="text-white block">Main Yatra Office Address:</strong>
+                                    Near Chakra Tirtha Main Gate, Post Naimisharanya, District Sitapur, Uttar Pradesh - 261402, India.
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-phone text-saffron text-base"></i>
+                                <div>
+                                    <strong class="text-white block">24x7 Pilgrim Support Line:</strong>
+                                    +91 98765 43210 / +91 5862 288000
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-envelope text-saffron text-base"></i>
+                                <div>
+                                    <strong class="text-white block">Official Email ID:</strong>
+                                    info@naimishranyatravels.com
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-user-shield text-saffron text-base"></i>
+                                <div>
+                                    <strong class="text-white block">Point of Contact (POC):</strong>
+                                    Shri Anurag Mishra (Managing Director)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Location Map Frame Mockup -->
+                    <div class="w-full h-40 rounded-2xl bg-sacred-dark border border-saffron/30 relative overflow-hidden flex flex-col items-center justify-center text-center p-4">
+                        <i class="fa-solid fa-map-location-dot text-3xl text-saffron mb-2"></i>
+                        <span class="text-xs font-bold text-white">Naimisharanya Dham Location Map</span>
+                        <span class="text-[11px] text-gray-400">Sitapur UP • 85 Km from Lucknow Airport</span>
+                        <a href="https://maps.google.com" target="_blank" class="mt-2 text-[10px] text-saffron hover:underline font-bold">
+                            Open in Google Maps <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- Razorpay Simulated Modal -->
+    <div id="razorpayModal" class="fixed inset-0 z-[80] hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-saffron/50 rounded-2xl max-w-md w-full p-6 text-white relative shadow-2xl space-y-5">
+            <button onclick="closeRazorpayModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+            
+            <!-- Header -->
+            <div class="flex items-center justify-between border-b border-gray-800 pb-3">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded bg-blue-600 flex items-center justify-center font-extrabold text-sm">R</div>
+                    <span class="font-bold text-sm tracking-wide">Razorpay Trusted</span>
+                </div>
+                <div class="text-right">
+                    <span class="text-[10px] text-gray-400 block uppercase">Amount Payable</span>
+                    <span id="rzpAmountDisplay" class="text-lg font-bold text-saffron">₹1,199</span>
+                </div>
+            </div>
+
+            <!-- Booking Summary -->
+            <div class="bg-slate-800/60 p-3 rounded-xl text-xs space-y-1">
+                <div class="text-gray-400">Order Ref: <span id="rzpOrderId" class="text-white font-mono">#NAIMISH-88012</span></div>
+                <div class="text-gray-400">Service: <span id="rzpItemName" class="text-saffron font-semibold">Chakra Tirtha Stay</span></div>
+                <div class="text-gray-400">Yatri: <span id="rzpYatriName" class="text-white">Shri Yatri</span></div>
+            </div>
+
+            <!-- Payment Options -->
+            <div class="space-y-3">
+                <span class="text-xs text-gray-400 font-semibold block">Select Payment Method:</span>
+
+                <button onclick="simulateSuccessfulPayment('UPI Instant')" class="w-full bg-slate-800 hover:bg-slate-700 border border-gray-700 p-3 rounded-xl flex items-center justify-between text-xs transition">
+                    <span class="flex items-center gap-2 font-semibold"><i class="fa-solid fa-qrcode text-saffron text-sm"></i> UPI QR / GPay / PhonePe</span>
+                    <i class="fa-solid fa-chevron-right text-gray-500"></i>
+                </button>
+
+                <button onclick="simulateSuccessfulPayment('Credit / Debit Card')" class="w-full bg-slate-800 hover:bg-slate-700 border border-gray-700 p-3 rounded-xl flex items-center justify-between text-xs transition">
+                    <span class="flex items-center gap-2 font-semibold"><i class="fa-regular fa-credit-card text-blue-400 text-sm"></i> Credit / Debit Cards</span>
+                    <i class="fa-solid fa-chevron-right text-gray-500"></i>
+                </button>
+
+                <button onclick="simulateSuccessfulPayment('NetBanking')" class="w-full bg-slate-800 hover:bg-slate-700 border border-gray-700 p-3 rounded-xl flex items-center justify-between text-xs transition">
+                    <span class="flex items-center gap-2 font-semibold"><i class="fa-solid fa-building-columns text-green-400 text-sm"></i> NetBanking (SBI, HDFC, PNB)</span>
+                    <i class="fa-solid fa-chevron-right text-gray-500"></i>
+                </button>
+            </div>
+
+            <div class="text-[10px] text-center text-gray-500 pt-2 border-t border-gray-800">
+                <i class="fa-solid fa-lock text-green-500 mr-1"></i> Simulated Secure Checkout Mode for Shri Naimishranya Travels
+            </div>
+        </div>
+    </div>
+
+    <!-- Printable Receipt Modal -->
+    <div id="printableReceiptModal" class="fixed inset-0 z-[90] hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="glass-panel-gold rounded-3xl max-w-xl w-full p-6 sm:p-8 text-white relative max-h-[90vh] overflow-y-auto">
+            
+            <div class="no-print flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+                <span class="text-xs font-bold text-saffron uppercase"><i class="fa-solid fa-circle-check text-green-400 mr-1"></i> Booking Confirmed!</span>
+                <div class="flex items-center gap-2">
+                    <button onclick="window.print()" class="bg-saffron text-sacred-dark text-xs font-bold px-3 py-1.5 rounded-lg flex items-center gap-1">
+                        <i class="fa-solid fa-print"></i> Print / Download Receipt
+                    </button>
+                    <button onclick="closeReceiptModal()" class="text-gray-400 hover:text-white text-xl ml-2"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+            </div>
+
+            <div class="space-y-6" id="receiptContent">
+                <!-- Generated dynamically via JS -->
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="glass-panel border-t border-gold/20 py-8 px-4 mt-20 text-center text-xs text-gray-400">
+        <div class="max-w-7xl mx-auto space-y-3">
+            <div class="flex items-center justify-center gap-2 font-rozha text-saffron text-lg">
+                <i class="fa-solid fa-om diya-flame"></i> Shri Naimishranya Tours & Travels
+            </div>
+            <p>Providing divine stay and yatra experiences in Naimisharanya Dham, Sitapur, UP.</p>
+            <p class="text-[11px] text-gold/80">Affiliated with Shri Naimishranya Jan Kalyan Samiti • Instagram: @anurag.cfg</p>
+            <p class="text-[10px] text-gray-500 pt-2">© 2026 Shri Naimishranya Tours & Travels. All Rights Reserved. Jai Shri Radhey Krishna.</p>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Support Button -->
+    <a href="https://wa.me/919876543210?text=Jai%20Shri%20Krishna!%20I%20want%20to%20inquire%20about%20Naimisharanya%20Dham%20Stay%20and%20Yatra." target="_blank" class="fixed bottom-6 right-6 z-40 w-14 h-14 bg-green-500 text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+    </a>
+
+    <script>
+        const translations = {
+            en: {
+                brandTitle: "Shri Naimishranya Tours",
+                brandSlogan: "Dharmo Rakshati Rakshitah",
+                navHome: "Home",
+                navPlaces: "Places to Visit",
+                navStay: "Book Stay",
+                navTravel: "Book Travel",
+                navSocial: "NGO & Social Work",
+                navContact: "Contact Us",
+                btnQuickBook: "Quick Book",
+                heroBadge: "Land of 88,000 Holy Sages",
+                heroTitle: 'Welcome to Sacred <span class="text-saffron">Naimisharanya Dham</span>',
+                heroSubtitle: "Experience divine bliss at Chakra Tirtha, Vyas Gaddi, and Lalita Devi Shakti Peeth. We provide verified ashram stays, luxury pilgrim hotels, dedicated Vedic guides, and comfortable yatra travel.",
+                heroBtnStay: "Book Sacred Stay",
+                heroBtnTravel: "Book Yatra Transport",
+                feat1Title: "Verified Ashrams",
+                feat1Sub: "Clean, authentic & peaceful",
+                feat2Title: "Vedic Yatra Guides",
+                feat2Sub: "Expert local pandits",
+                feat3Title: "Razorpay Secure",
+                feat3Sub: "100% Instant confirmation",
+                feat4Title: "24/7 Assistance",
+                feat4Sub: "Dedicated pilgrim support",
+                secPlacesTitle: "Places to Visit in Naimisharanya",
+                secPlacesSub: "Sacred Darshan Guide",
+                secPlacesDesc: "Click on any pilgrimage site to view detailed darshan history, optimal visiting hours, and book direct package options.",
+                secStayTitle: "Book Sacred Stay & Ashram Rooms",
+                secTravelTitle: "Book Tour & Travel Packages",
+                secSocialTitle: "Social Activities & NGO Initiatives",
+                secContactTitle: "Contact Pilgrimage Office"
+            },
+            hi: {
+                brandTitle: "श्री नैमिषारण्य टूर एवं ट्रेवल्स",
+                brandSlogan: "धर्मो रक्षति रक्षितः",
+                navHome: "मुख्य पृष्ठ",
+                navPlaces: "दर्शनीय स्थल",
+                navStay: "आवास बुक करें",
+                navTravel: "यात्रा बुक करें",
+                navSocial: "एनजीओ व सेवा",
+                navContact: "संपर्क करें",
+                btnQuickBook: "तुरंत बुकिंग",
+                heroBadge: "88,000 ऋषियों की पावन तपोभूमि",
+                heroTitle: 'पावन <span class="text-saffron">नैमिषारण्य धाम</span> में आपका स्वागत है',
+                heroSubtitle: "चक्रतीर्थ, व्यास गद्दी, एवं माँ ललिता देवी शक्तिपीठ में दिव्य दर्शन प्राप्त करें। हम सत्य सत्यापित आश्रम, तीर्थ होटल, वैदिक मार्गदर्शक एवं सुगम वाहन सेवा प्रदान करते हैं।",
+                heroBtnStay: "आवास बुक करें",
+                heroBtnTravel: "यात्रा वाहन बुक करें",
+                feat1Title: "प्रमाणित आश्रम",
+                feat1Sub: "स्वच्छ, सात्विक एवं शांत",
+                feat2Title: "वैदिक तीर्थ गाइड",
+                feat2Sub: "स्थानीय विद्वान पंडित",
+                feat3Title: "सुरक्षित भुगतान",
+                feat3Sub: "रेजॉरपे द्वारा तुरंत रसीद",
+                feat4Title: "24/7 तीर्थ सहायता",
+                feat4Sub: "समर्पित यात्री सेवा",
+                secPlacesTitle: "नैमिषारण्य के प्रमुख दर्शनीय स्थल",
+                secPlacesSub: "पावन दर्शन मार्गदर्शिका",
+                secPlacesDesc: "किसी भी तीर्थ स्थल पर क्लिक करके उसका इतिहास, दर्शन का समय और सीधे पैकेज बुक करें।",
+                secStayTitle: "आश्रम एवं होटल कक्ष बुकिंग",
+                secTravelTitle: "टूर एवं ट्रेवल पैकेज बुकिंग",
+                secSocialTitle: "सामाजिक गतिविधियां एवं जन कल्याण समिति",
+                secContactTitle: "तीर्थ सेवा कार्यालय से संपर्क करें"
+            },
+            sa: {
+                brandTitle: "श्री नैमिषारण्य यात्रा सेवा",
+                brandSlogan: "धर्मो रक्षति रक्षितः",
+                navHome: "मुख्यम्",
+                navPlaces: "पुण्यस्थलानि",
+                navStay: "निवासः",
+                navTravel: "यात्रा",
+                navSocial: "सेवाकार्यम्",
+                navContact: "सम्पर्कः",
+                btnQuickBook: "शीघ्रबुकम्",
+                heroBadge: "अष्टाशीतिसहस्र ऋषीणां तपोभूमिः",
+                heroTitle: 'दिव्य <span class="text-saffron">नैमिषारण्य धामे</span> स्वागतम्',
+                heroSubtitle: "चक्रतीर्थे, व्यासगद्यां, ललितादेवी शक्तिपीठे च दिव्यदर्शनं प्राप्नुवन्तु। वयं सात्विकनिवासं श्रेष्ठवाहनानि च दद्मः।",
+                heroBtnStay: "निवासं बुक कुर्वन्तु",
+                heroBtnTravel: "वाहनं बुक कुर्वन्तु",
+                feat1Title: "पवित्र आश्रमः",
+                feat1Sub: "सात्विक वातावरणम्",
+                feat2Title: "वैदिक मार्गदर्शकाः",
+                feat2Sub: "विद्वान्सः पण्डिताः",
+                feat3Title: "सुरक्षित भुगतानम्",
+                feat3Sub: "रेजॉरपे माध्यमम्",
+                feat4Title: "अहर्निशं सहायता",
+                feat4Sub: "यात्रिणां सेवा",
+                secPlacesTitle: "नैमिषारण्यस्य पुण्यस्थलानि",
+                secPlacesSub: "पावन दर्शन निर्देशिका",
+                secPlacesDesc: "तीर्थस्थानं चित्वा तस्य महिमानं दर्शनसमयं च जानन्तु।",
+                secStayTitle: "पावन निवास कक्ष बुकम्",
+                secTravelTitle: "यात्रा वाहन बुकम्",
+                secSocialTitle: "सामाजिक सेवा एवं जन कल्याण समिति",
+                secContactTitle: "कार्यालय सम्पर्कः"
+            },
+            bn: {
+                brandTitle: "শ্রী নৈমিষারণ্য ট্যুরস",
+                brandSlogan: "ধর্মো রক্ষতি রক্ষিতঃ",
+                navHome: "হোম",
+                navPlaces: "দর্শনীয় স্থান",
+                navStay: "থাকার ঘর বুকিং",
+                navTravel: "ভ্রমণ বুকিং",
+                navSocial: "এনজিও ও সমাজসেবা",
+                navContact: "যোগাযোগ",
+                btnQuickBook: "দ্রুত বুকিং",
+                heroBadge: "৮৮,০০০ ঋষির তপোভূমি",
+                heroTitle: 'পবিত্র <span class="text-saffron">নৈমিষারণ্য ধামে</span> আপনাকে স্বাগতম',
+                heroSubtitle: "চক্রতীর্থ, ব্যাস গদ্দি এবং মা ললিতা দেবী শক্তিপীঠে ঐশ্বরিক দর্শন অনুভব করুন। আমরা আশ্রম ও ভ্রমণ পরিষেবা প্রদান করি।",
+                heroBtnStay: "থাকার ঘর বুক করুন",
+                heroBtnTravel: "ভ্রমণ গাড়ি বুক করুন",
+                feat1Title: "যাচাইকৃত আশ্রম",
+                feat1Sub: "পরিস্কার ও শান্ত",
+                feat2Title: "বৈদিক গাইড",
+                feat2Sub: "অভিজ্ঞ পণ্ডিত",
+                feat3Title: "সুরক্ষিত পেমেন্ট",
+                feat3Sub: "রেজারপে দ্বারা",
+                feat4Title: "২৪/৭ সহায়তা",
+                feat4Sub: "যাতায়াত সাহায্য",
+                secPlacesTitle: "নৈমিষারণ্যের প্রধান দর্শনীয় স্থান",
+                secPlacesSub: "পবিত্র দর্শন গাইড",
+                secPlacesDesc: "যেকোনো তীর্থস্থানে ক্লিক করে বিবরণ ও প্যাকেজ বুক করুন।",
+                secStayTitle: "পবিত্র থাকার ঘর বুকিং",
+                secTravelTitle: "ভ্রমণ ও গাড়ি বুকিং",
+                secSocialTitle: "সামাজিক কার্যক্রম ও এনজিও",
+                secContactTitle: "যোগাযোগ কার্যালয়"
+            },
+            mr: {
+                brandTitle: "श्री नैमिषारण्य टूर व ट्रॅव्हल्स",
+                brandSlogan: "धर्मो रक्षति रक्षितः",
+                navHome: "मुख्य पृष्ठ",
+                navPlaces: "प्रेक्षणीय स्थळे",
+                navStay: "निवास बुकिंग",
+                navTravel: "प्रवास बुकिंग",
+                navSocial: "समाजकार्य व एनजीओ",
+                navContact: "संपर्क",
+                btnQuickBook: "झटपट बुकिंग",
+                heroBadge: "८८,००० ऋषींची तपोभूमी",
+                heroTitle: 'पवित्र <span class="text-saffron">नैमिषारण्य धामात</span> आपले स्वागत आहे',
+                heroSubtitle: "चक्रतीर्थ, व्यास गद्दी आणि ललिता देवी शक्तिपीठाचे दर्शन घ्या. आम्ही उत्तम आश्रम व प्रवास सेवा देतो.",
+                heroBtnStay: "निवास बुक करा",
+                heroBtnTravel: "प्रवास वाहन बुक करा",
+                feat1Title: "प्रमाणित आश्रम",
+                feat1Sub: "स्वच्छ व सात्विक",
+                feat2Title: "वैदिक मार्गदर्शक",
+                feat2Sub: "स्थानिक विद्वान पंडित",
+                feat3Title: "सुरक्षित पेमेंट",
+                feat3Sub: "रेजॉरपेद्वारे त्वरीत",
+                feat4Title: "२४/७ मदत",
+                feat4Sub: "भाविकांसाठी सेवा",
+                secPlacesTitle: "नैमिषारण्य मधील प्रमुख तीर्थक्षेत्रे",
+                secPlacesSub: "पावन दर्शन मार्गदर्शिका",
+                secPlacesDesc: "कोणत्याही तीर्थक्षेत्रावर क्लिक करून माहिती व बुकिंग करा.",
+                secStayTitle: "आश्रम व हॉटेल रूम बुकिंग",
+                secTravelTitle: "टूर व ट्रॅव्हल पॅकेज बुकिंग",
+                secSocialTitle: "सामाजिक कार्य व जन कल्याण समिती",
+                secContactTitle: "संपर्क कार्यालय"
+            },
+            te: {
+                brandTitle: "శ్రీ నైమిషారణ్య టూర్స్",
+                brandSlogan: "ధర్మో రక్షతి రక్షితః",
+                navHome: "హోమ్",
+                navPlaces: "దర్శనీయ స్థలాలు",
+                navStay: "వసతి బుకింగ్",
+                navTravel: "ప్రయాణం బుకింగ్",
+                navSocial: "సామాజిక సేవ",
+                navContact: "సంప్రదించండి",
+                btnQuickBook: "త్వరిత బుకింగ్",
+                heroBadge: "88,000 ఋషుల తపోభూమి",
+                heroTitle: 'పవిత్ర <span class="text-saffron">నైమిషారణ్య ధామం</span> కు స్వాగతం',
+                heroSubtitle: "చక్రతీర్థం, వ్యాస గద్ది, లలితా దేవి శక్తిపీఠం దర్శనం చేసుకోండి. మేము నివాసం మరియు ప్రయాణ సౌకర్యాలు అందిస్తాము.",
+                heroBtnStay: "వసతి బుక్ చేయండి",
+                heroBtnTravel: "వాహనం బుక్ చేయండి",
+                feat1Title: "ఆశ్రమాలు",
+                feat1Sub: "పరిశుభ్రమైనవి",
+                feat2Title: "వైదిక గైడ్లు",
+                feat2Sub: "పండితులు",
+                feat3Title: "సురక్షిత పేమెంట్",
+                feat3Sub: "రేజర్‌పే ద్వారా",
+                feat4Title: "24/7 సహాయం",
+                feat4Sub: "భక్తుల సేవ",
+                secPlacesTitle: "నైమిషారణ్య సందర్శనీయ స్థలాలు",
+                secPlacesSub: "దర్శన మార్గదర్శి",
+                secPlacesDesc: "ఏదైనా స్థలాన్ని ఎంచుకుని వివరాలు మరియు బుకింగ్స్ చూడండి.",
+                secStayTitle: "వసతి మరియు రూమ్ బుకింగ్",
+                secTravelTitle: "టూర్ అండ్ ట్రావెల్ బుకింగ్",
+                secSocialTitle: "సామాజిక సేవలు & NGO",
+                secContactTitle: "సంప్రదింపుల కార్యాలయం"
+            },
+            ta: {
+                brandTitle: "శ్రీ నైమిషారణ్య టూర్స్",
+                brandSlogan: "ధర్మో రక్షతి రక్షితః",
+                navHome: "ముఖ్య పుట",
+                navPlaces: "దర్శనీయ ప్రదేశాలు",
+                navStay: "తంగమ్ బుకింగ్",
+                navTravel: "పయణ బుకింగ్",
+                navSocial: "సేవైకల్",
+                navContact: "తొడర్పు కొళ్క",
+                btnQuickBook: "ఉడనడి బుకింగ్",
+                heroBadge: "88,000 రిషికలిన్ తపోభూమి",
+                heroTitle: 'పుனித <span class="text-saffron">నైమిషారణ్య ధామం</span> నక్కు నల్వరవు',
+                heroSubtitle: "సక్రతీర్థం, వ్యాస గద్ది, లలితా దేవి శక్తిపీఠం దర్శనం చేయుంగల్. నాంగల్ మకిళిచ్చియుడన్ సేవై సేకిరోమ్.",
+                heroBtnStay: "తంగమ్ ఇడం బుక్ చేయుంగల్",
+                heroBtnTravel: "వాహనం బుక్ చేయుంగల్",
+                feat1Title: "ఆశ్రమం",
+                feat1Sub: "పవిత్రమానది",
+                feat2Title: "వైదిక గైడ్",
+                feat2Sub: "పండితర్గల్",
+                feat3Title: "పాదుకాప్పాన పేమెంట్",
+                feat3Sub: "రేజర్‌పే",
+                feat4Title: "24/7 సేవై",
+                feat4Sub: "యాత్తిరికర్కల్ సేవై",
+                secPlacesTitle: "నైమిషారణ్య ముక్కియ ఇడంగల్",
+                secPlacesSub: "పుனித దర్శన గైడ్",
+                secPlacesDesc: "వివరంగళై అరియ ఇడం మీద క్లిక్ చేయుంగల్.",
+                secStayTitle: "తంగుమ్ ఇడంగల్ బుకింగ్",
+                secTravelTitle: "పయణ ప్యాకేజ్ బుకింగ్",
+                secSocialTitle: "సమూహ సేవైకల్ & NGO",
+                secContactTitle: "తొడర్పు అలువ‌లకమ్"
+            },
+            gu: {
+                brandTitle: "શ્રી નૈમિષારણ્ય ટુર્સ",
+                brandSlogan: "ધર્મો રક્ષતિ રક્ષિતઃ",
+                navHome: "હોમ",
+                navPlaces: "દર્શનીય સ્થળો",
+                navStay: "રહેઠાણ બુકિંગ",
+                navTravel: "પ્રવાસ બુકિંગ",
+                navSocial: "સામાજિક સેવા",
+                navContact: "સંપર્ક કરો",
+                btnQuickBook: "ઝડપી બુકિંગ",
+                heroBadge: "૮૮,૦૦૦ ઋષિઓની તપોભૂમિ",
+                heroTitle: 'પવિત્ર <span class="text-saffron">નૈમિષારણ્ય ધામ</span> માં આપનું સ્વાગત છે',
+                heroSubtitle: "ચક્રતીર્થ, વ્યાસ ગાદી, અને લલિતા દેવી શક્તિપીઠના દિવ્ય દર્શન કરો. અમે સુવિધાજનક આશ્રમ અને પ્રવાસ પૂરો પાડીએ છીએ.",
+                heroBtnStay: "રહેઠાણ બુક કરો",
+                heroBtnTravel: "વાહન બુક કરો",
+                feat1Title: "પ્રમાણિત આશ્રમ",
+                feat1Sub: "સાત્વિક વાતાવરણ",
+                feat2Title: "વૈદિક માર્ગદર્શક",
+                feat2Sub: "વિદ્વાન પંડિત",
+                feat3Title: "સુરક્ષિત પેમેન્ટ",
+                feat3Sub: "રેઝરપે દ્વારા",
+                feat4Title: "૨૪/૭ સહાયતા",
+                feat4Sub: "યાત્રી સેવા",
+                secPlacesTitle: "નૈમિષારણ્યના દર્શનીય સ્થળો",
+                secPlacesSub: "પાવન દર્શન માર્ગદર્શિકા",
+                secPlacesDesc: "કોઈપણ સ્થળ પર ક્લિક કરી વધુ વિગત મેળવો.",
+                secStayTitle: "આશ્રમ અને રૂમ બુકિંગ",
+                secTravelTitle: "ટૂર અને પ્રવાસ બુકિંગ",
+                secSocialTitle: "સામાજિક કાર્ય અને NGO",
+                secContactTitle: "સંપર્ક કાર્યાલય"
+            },
+            kn: {
+                brandTitle: "ಶ್ರೀ ನೈಮಿಷಾರಣ್ಯ ಟೂರ್ಸ್",
+                brandSlogan: "ಧರ್ಮೋ ರಕ್ಷತಿ ರಕ್ಷಿತಃ",
+                navHome: "ಮುಖ್ಯ ಪುಟ",
+                navPlaces: "ದರ್ಶನೀಯ ಸ್ಥಳಗಳು",
+                navStay: "ವಸತಿ ಬುಕಿಂಗ್",
+                navTravel: "ಪ್ರವಾಸ ಬುಕಿಂಗ್",
+                navSocial: "ಸಮಾಜ ಸೇವೆ",
+                navContact: "ಸಂಪರ್ಕಿಸಿ",
+                btnQuickBook: "ತ್ವರಿತ ಬುಕಿಂಗ್",
+                heroBadge: "88,000 ಋಷಿಗಳ ತಪೋಭೂಮಿ",
+                heroTitle: 'ಪವಿತ್ರ <span class="text-saffron">ನೈಮಿಷಾರಣ್ಯ ಧಾಮಕ್ಕೆ</span> ಸುಸ್ವಾಗತ',
+                heroSubtitle: "ಚಕ್ರತೀರ್ಥ, ವ್ಯಾಸ ಗದ್ದಿ, ಮತ್ತು ಲಲಿತಾ ದೇವಿ ಶಕ್ತಿಪೀಠದ ದಿವ್ಯ ದರ್ಶನ ಪಡೆಯಿರಿ. ನಾವು ವಸತಿ ಮತ್ತು ಪ್ರಯಾಣ ಸೇವೆ ಒದಗಿಸುತ್ತೇವೆ.",
+                heroBtnStay: "ವಸತಿ ಬುಕ್ ಮಾಡಿ",
+                heroBtnTravel: "ವಾಹನ ಬುಕ್ ಮಾಡಿ",
+                feat1Title: "ಆಶ್ರಮಗಳು",
+                feat1Sub: "ಪವಿತ್ರ ವಾತಾವರಣ",
+                feat2Title: "ವೈದಿಕ ಗೈಡ್",
+                feat2Sub: "ಪಂಡಿತರು",
+                feat3Title: "ಸುರಕ್ಷಿತ ಪಾವತಿ",
+                feat3Sub: "ರೇಜರ್ ಪೇ ಮೂಲಕ",
+                feat4Title: "24/7 ನೆರವು",
+                feat4Sub: "ಯಾತ್ರಿಕರ ಸೇವೆ",
+                secPlacesTitle: "ನೈಮಿಷಾರಣ್ಯದ ಪ್ರಮುಖ ಸ್ಥಳಗಳು",
+                secPlacesSub: "ಪವಿತ್ರ ದರ್ಶನ ಮಾರ್ಗದರ್ಶಿ",
+                secPlacesDesc: "ವಿವರಗಳಿಗಾಗಿ ಯಾವುದೇ ಸ್ಥಳದ ಮೇಲೆ ಕ್ಲಿಕ್ ಮಾಡಿ.",
+                secStayTitle: "ವಸತಿ ಮತ್ತು ಕೊಠಡಿ ಬುಕಿಂಗ್",
+                secTravelTitle: "ಟೂರ್ ಮತ್ತು ಟ್ರಾವೆಲ್ ಬುಕಿಂಗ್",
+                secSocialTitle: "ಸಮಾಜ ಸೇವೆ & NGO",
+                secContactTitle: "ಸಂಪರ್ಕ ಕಛೇರಿ"
+            },
+            ml: {
+                brandTitle: "ശ്രീ നൈമിഷാരണ്യ ടൂവേഴ്സ്",
+                brandSlogan: "ധർമ്മോ രക്ഷതി രക്ഷിതഃ",
+                navHome: "ഹോം",
+                navPlaces: "ദർശന സ്ഥലങ്ങൾ",
+                navStay: "താമസം ബുക്കിംഗ്",
+                navTravel: "യാത്ര ബുക്കിംഗ്",
+                navSocial: "സാമൂഹിക സേവനം",
+                navContact: "ബന്ധപ്പെടുക",
+                btnQuickBook: "ദ്രുത ബുക്കിംഗ്",
+                heroBadge: "88,000 ഋഷിമാരുടെ തപോഭൂമി",
+                heroTitle: 'പവിത്രമായ <span class="text-saffron">നൈമിഷാരണ്യ ധാമത്തിലേക്ക്</span> സ്വാഗതം',
+                heroSubtitle: "ചക്രതീർത്ഥം, വ്യാസ ഗദ്ദി, ലളിതാ ദേവി ശക്തിപീഠം എന്നിവ ദർശിക്കുക. ഞങ്ങൾ മികച്ച താമസവും യാത്രാ സൗകര്യവും നൽകുന്നു.",
+                heroBtnStay: "താമസം ബുക്ക് ചെയ്യുക",
+                heroBtnTravel: "വാഹനം ബുക്ക് ചെയ്യുക",
+                feat1Title: "ആശ്രമങ്ങൾ",
+                feat1Sub: "പവിത്രവും ശാന്തവും",
+                feat2Title: "വൈദിക ഗൈഡ്",
+                feat2Sub: "പണ്ഡിതന്മാർ",
+                feat3Title: "സുരക്ഷിത പേയ്മെന്റ്",
+                feat3Sub: "റേസർപേ വഴി",
+                feat4Title: "24/7 സഹായം",
+                feat4Sub: "തീർത്ഥാടക സേവനം",
+                secPlacesTitle: "നൈമിഷാരണ്യത്തിലെ പ്രധാന സ്ഥലങ്ങൾ",
+                secPlacesSub: "പവിത്ര ദർശന ഗൈഡ്",
+                secPlacesDesc: "വിവരങ്ങൾ അറിയാൻ സ്ഥലങ്ങളിൽ ക്ലിക്ക് ചെയ്യുക.",
+                secStayTitle: "താമസവും മുറി ബുക്കിംഗും",
+                secTravelTitle: "ടൂർ ആൻഡ് ട്രാവൽ ബുക്കിംഗ്",
+                secSocialTitle: "സാമൂഹിക സേവനങ്ങളും NGO യും",
+                secContactTitle: "ബന്ധപ്പെടേണ്ട ഓഫീസ്"
+            }
+        };
+
+        let currentLang = 'hi';
+
+        function selectLanguage(langCode) {
+            if (!translations[langCode]) langCode = 'hi';
+            currentLang = langCode;
+
+            // Hide initial modal
+            const modal = document.getElementById('langModal');
+            if (modal) modal.style.display = 'none';
+
+            // Sync header select dropdown
+            const headerSelect = document.getElementById('headerLangSelect');
+            if (headerSelect) headerSelect.value = langCode;
+
+            // Update text elements
+            const langData = translations[langCode];
+            for (const key in langData) {
+                const el = document.getElementById(key);
+                if (el) {
+                    el.innerHTML = langData[key];
+                }
+            }
+
+            showToast(`Language changed to ${langCode.toUpperCase()}`);
+        }
+
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = 'glass-panel-gold text-xs text-saffron px-4 py-3 rounded-xl border border-saffron/50 shadow-xl flex items-center gap-2 pointer-events-auto transition-all duration-300 transform translate-x-10 opacity-0';
+            toast.innerHTML = `<i class="fa-solid fa-bell text-gold"></i> <span>${message}</span>`;
+            
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.remove('translate-x-10', 'opacity-0');
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-x-10');
+                setTimeout(() => toast.remove(), 300);
+            }, 3500);
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        const placeDetailsData = {
+            chakraTirtha: {
+                title: "Chakra Tirtha Kund",
+                tag: "Most Sacred Water Body",
+                img: "https://images.unsplash.com/photo-1545128485-c400e7702796?auto=format&fit=crop&w=800&q=80",
+                desc: "According to Mahabharata and Brahmanda Purana, when sages approached Lord Brahma seeking a peaceful place for continuous penance, Lord Brahma released a cosmic wheel (Chakra). The wheel's hub (Nabhi) plunged into this ground creating a deep holy spring known as Chakra Tirtha.",
+                timings: "5:00 AM - 9:00 PM (Daily)",
+                rituals: "Holy Dip (Snana), Snan Sankalpa, Rahu-Ketu Shanti Puja, Pitru Tarpan",
+                stayPkg: "Chakra Tirtha Ashram Stay",
+                stayType: "Ashram Cottage",
+                stayPrice: 1199,
+                travelPkg: "1-Day Naimish Express Tour",
+                travelVeh: "AC Sedan",
+                travelPrice: 1499
+            },
+            lalitaDevi: {
+                title: "Maa Lalita Devi Shakti Peeth",
+                tag: "51 Sacred Shakti Peethas",
+                img: "https://images.unsplash.com/photo-1609766857041-ed402ea8069a?auto=format&fit=crop&w=800&q=80",
+                desc: "When Sati's body parts fell across Bharatvarsha, Her heart/linga swaroop is worshipped here as Maa Lalita Devi. Devotees offer Red Chunri, Bindi, and Sringar samagri. It is believed praying here fulfills all spiritual and material desires.",
+                timings: "6:00 AM - 8:30 PM (Aarti at 7:00 AM & 7:30 PM)",
+                rituals: "Sringar Archana, Chandi Path, Navratri Vishesh Hawan",
+                stayPkg: "Vipra Luxury Heritage Hotel",
+                stayType: "Deluxe Suite",
+                stayPrice: 3499,
+                travelPkg: "1-Day Naimish Express Tour",
+                travelVeh: "AC Sedan",
+                travelPrice: 1499
+            },
+            vyasGaddi: {
+                title: "Vyas Gaddi",
+                tag: "Seat of Sage Ved Vyas",
+                img: "https://images.unsplash.com/photo-1590077428593-a55bb07c4665?auto=format&fit=crop&w=800&q=80",
+                desc: "Under an ancient 5,000+ year old Banyan tree stands Vyas Gaddi. Here Maharshi Ved Vyasa compiled the 4 Vedas, 18 Maha Puranas, Mahabharata, and Shrimad Bhagavata. The tree bark itself resembles ancient manuscript folios.",
+                timings: "6:00 AM - 7:00 PM",
+                rituals: "Veda Parayan, Guru Vandana, Shrimad Bhagavata Katha Reading",
+                stayPkg: "Rishi Family Yatri Niwas",
+                stayType: "Family Room",
+                stayPrice: 2199,
+                travelPkg: "3-Day Grand Holy Dham Yatra",
+                travelVeh: "Innova SUV",
+                travelPrice: 4999
+            },
+            hanumanGarhi: {
+                title: "Hanuman Garhi & Pandav Kila",
+                tag: "South Facing Powerful Hanuman Shrine",
+                img: "https://images.unsplash.com/photo-1567157577867-05ccb1388e66?auto=format&fit=crop&w=800&q=80",
+                desc: "Located on an elevated fortress mound (Pandav Kila). Legend states that Lord Hanuman emerged here after rescuing Shri Rama and Lakshmana from Ahiravana in Patala Loka.",
+                timings: "5:30 AM - 8:00 PM",
+                rituals: "Hanuman Chalisa Path, Chola Offering, Sundarkand Parayan",
+                stayPkg: "Chakra Tirtha Ashram Stay",
+                stayType: "Ashram Cottage",
+                stayPrice: 1199,
+                travelPkg: "1-Day Naimish Express Tour",
+                travelVeh: "AC Sedan",
+                travelPrice: 1499
+            },
+            gomtiGhat: {
+                title: "Dashashwamedh Ghat & Gomti River",
+                tag: "Holy River Bath & Aarti",
+                img: "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=800&q=80",
+                desc: "The sacred bank of Gomti river where Lord Rama completed his 10th Ashwamedha Yajna. Grand Maha Aarti takes place every evening with hundreds of floating lamps.",
+                timings: "Evening Aarti at 6:30 PM",
+                rituals: "Gomti River Dip, Deep Dan (Lamp Floating), Evening Aarti",
+                stayPkg: "Vipra Luxury Heritage Hotel",
+                stayType: "Deluxe Suite",
+                stayPrice: 3499,
+                travelPkg: "1-Day Naimish Express Tour",
+                travelVeh: "AC Sedan",
+                travelPrice: 1499
+            },
+            sutaGaddi: {
+                title: "Suta Gaddi & Devdeveshwar",
+                tag: "Sage Suta Goswami Assembly",
+                img: "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80",
+                desc: "The sacred seat where Sage Suta Goswami recited Puranas to 88,000 sages headed by Sage Saunaka. Nearby lies Devdeveshwar Shiva temple worshipped by Brahma and Vishnu.",
+                timings: "6:00 AM - 7:30 PM",
+                rituals: "Rudrabhishek, Shiv Archana, Purana Shravan",
+                stayPkg: "Rishi Family Yatri Niwas",
+                stayType: "Family Room",
+                stayPrice: 2199,
+                travelPkg: "3-Day Grand Holy Dham Yatra",
+                travelVeh: "Innova SUV",
+                travelPrice: 4999
+            }
+        };
+
+        function openPlaceModal(placeKey) {
+            const data = placeDetailsData[placeKey];
+            if (!data) return;
+
+            const contentHtml = `
+                <div class="space-y-4">
+                    <span class="bg-saffron/20 text-saffron border border-saffron/40 text-[10px] font-bold uppercase px-3 py-1 rounded-full inline-block">${data.tag}</span>
+                    <h2 class="font-rozha text-2xl md:text-3xl text-saffron">${data.title}</h2>
+                    <img src="${data.img}" class="w-full h-52 object-cover rounded-2xl border border-saffron/30" alt="${data.title}">
+                    <p class="text-xs text-gray-300 leading-relaxed">${data.desc}</p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs pt-2">
+                        <div class="glass-card p-3 rounded-xl">
+                            <strong class="text-saffron block mb-1"><i class="fa-regular fa-clock mr-1"></i> Darshan Timings:</strong>
+                            <span class="text-gray-300">${data.timings}</span>
+                        </div>
+                        <div class="glass-card p-3 rounded-xl">
+                            <strong class="text-saffron block mb-1"><i class="fa-solid fa-hands-praying mr-1"></i> Key Rituals:</strong>
+                            <span class="text-gray-300">${data.rituals}</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-white/10 space-y-2">
+                        <span class="text-xs font-bold text-white block">Recommended Direct Yatra Packages:</span>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <button onclick="closePlaceModal(); prefillStay('${data.stayPkg}', '${data.stayType}', ${data.stayPrice})" class="flex-1 saffron-glow-btn text-sacred-dark text-xs font-bold py-2.5 rounded-xl text-center">
+                                <i class="fa-solid fa-hotel mr-1"></i> Book Suggested Stay (${data.stayPkg})
+                            </button>
+                            <button onclick="closePlaceModal(); prefillTravel('${data.travelPkg}', '${data.travelVeh}', ${data.travelPrice})" class="flex-1 glass-card hover:border-saffron text-xs font-bold text-white py-2.5 rounded-xl text-center">
+                                <i class="fa-solid fa-route mr-1 text-saffron"></i> Book Suggested Travel (${data.travelPkg})
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('modalPlaceContent').innerHTML = contentHtml;
+            document.getElementById('placeDetailsModal').classList.remove('hidden');
+        }
+
+        function closePlaceModal() {
+            document.getElementById('placeDetailsModal').classList.add('hidden');
+        }
+
+        function prefillStay(pkgName, roomType, basePrice) {
+            document.getElementById('stayPkgName').value = pkgName;
+            
+            // Set select option matching price if available
+            const select = document.getElementById('stayRoomType');
+            for (let i = 0; i < select.options.length; i++) {
+                if (parseInt(select.options[i].value) === basePrice) {
+                    select.selectedIndex = i;
+                    break;
+                }
+            }
+
+            calculateStayTotal();
+            
+            // Smooth scroll to stay section
+            document.getElementById('stay').scrollIntoView({ behavior: 'smooth' });
+            showToast(`Pre-filled Stay details for "${pkgName}"`);
+        }
+
+        function prefillTravel(pkgName, vehicleType, basePrice) {
+            document.getElementById('travelPkgName').value = pkgName;
+
+            const select = document.getElementById('travelVehicle');
+            for (let i = 0; i < select.options.length; i++) {
+                if (parseInt(select.options[i].value) === basePrice) {
+                    select.selectedIndex = i;
+                    break;
+                }
+            }
+
+            calculateTravelTotal();
+
+            // Smooth scroll to travel section
+            document.getElementById('travel').scrollIntoView({ behavior: 'smooth' });
+            showToast(`Pre-filled Travel details for "${pkgName}"`);
+        }
+
+        let currentStayTotal = 1199;
+        function calculateStayTotal() {
+            const roomRate = parseInt(document.getElementById('stayRoomType').value) || 1199;
+            const nights = parseInt(document.getElementById('stayNights').value) || 1;
+            const guests = parseInt(document.getElementById('stayGuests').value) || 1;
+
+            let addons = 0;
+            if (document.getElementById('addonMeals').checked) {
+                addons += (350 * guests * nights);
+            }
+            if (document.getElementById('addonVipDarshan').checked) {
+                addons += 500;
+            }
+            if (document.getElementById('addonPickup').checked) {
+                addons += 800;
+            }
+
+            const baseTotal = roomRate * nights;
+            currentStayTotal = baseTotal + addons;
+
+            document.getElementById('stayBasePriceDisplay').innerText = `₹${baseTotal.toLocaleString('en-IN')}`;
+            document.getElementById('stayAddonPriceDisplay').innerText = `₹${addons.toLocaleString('en-IN')}`;
+            document.getElementById('stayTotalPriceDisplay').innerText = `₹${currentStayTotal.toLocaleString('en-IN')}`;
+        }
+
+        let currentTravelTotal = 800;
+        function calculateTravelTotal() {
+            const vehicleRate = parseInt(document.getElementById('travelVehicle').value) || 800;
+
+            let addons = 0;
+            if (document.getElementById('travelAddonGuide').checked) {
+                addons += 700;
+            }
+            if (document.getElementById('travelAddonPuja').checked) {
+                addons += 450;
+            }
+            if (document.getElementById('travelAddonBoat').checked) {
+                addons += 300;
+            }
+
+            currentTravelTotal = vehicleRate + addons;
+
+            document.getElementById('travelBasePriceDisplay').innerText = `₹${vehicleRate.toLocaleString('en-IN')}`;
+            document.getElementById('travelAddonPriceDisplay').innerText = `₹${addons.toLocaleString('en-IN')}`;
+            document.getElementById('travelTotalPriceDisplay').innerText = `₹${currentTravelTotal.toLocaleString('en-IN')}`;
+        }
+
+        let activePaymentType = 'Stay'; // 'Stay' or 'Travel' or 'NGO'
+        let activePaymentDetails = {};
+
+        function handleStayPayment(e) {
+            e.preventDefault();
+            const leadName = document.getElementById('stayLeadName').value;
+            const phone = document.getElementById('stayPhone').value;
+            const pkgName = document.getElementById('stayPkgName').value;
+
+            if (!leadName || !phone) {
+                showToast("Please fill all required pilgrim details!");
+                return;
+            }
+
+            activePaymentType = 'Stay';
+            activePaymentDetails = {
+                serviceName: `Stay: ${pkgName}`,
+                yatriName: leadName,
+                phone: phone,
+                amount: currentStayTotal,
+                date: document.getElementById('stayCheckin').value || 'Immediate'
+            };
+
+            openRazorpayModal();
+        }
+
+        function handleTravelPayment(e) {
+            e.preventDefault();
+            const leadName = document.getElementById('travelLeadName').value;
+            const phone = document.getElementById('travelPhone').value;
+            const pkgName = document.getElementById('travelPkgName').value;
+
+            if (!leadName || !phone) {
+                showToast("Please fill all required yatri details!");
+                return;
+            }
+
+            activePaymentType = 'Travel';
+            activePaymentDetails = {
+                serviceName: `Yatra Travel: ${pkgName}`,
+                yatriName: leadName,
+                phone: phone,
+                amount: currentTravelTotal,
+                date: document.getElementById('travelDate').value || 'Immediate'
+            };
+
+            openRazorpayModal();
+        }
+
+        function openRazorpayModal() {
+            const randomOrderId = 'PAY-NAIMISH-' + Math.floor(100000 + Math.random() * 900000);
+            document.getElementById('rzpOrderId').innerText = '#' + randomOrderId;
+            document.getElementById('rzpItemName').innerText = activePaymentDetails.serviceName;
+            document.getElementById('rzpYatriName').innerText = activePaymentDetails.yatriName;
+            document.getElementById('rzpAmountDisplay').innerText = `₹${activePaymentDetails.amount.toLocaleString('en-IN')}`;
+
+            activePaymentDetails.orderId = randomOrderId;
+
+            document.getElementById('razorpayModal').classList.remove('hidden');
+        }
+
+        function closeRazorpayModal() {
+            document.getElementById('razorpayModal').classList.add('hidden');
+        }
+
+        function simulateSuccessfulPayment(method) {
+            closeRazorpayModal();
+            showToast(`Payment Successful via ${method}! Generating Pilgrimage Ticket...`);
+
+            const receiptHtml = `
+                <div class="text-center space-y-2 border-b border-white/10 pb-4">
+                    <div class="w-12 h-12 bg-saffron/20 border border-saffron rounded-full flex items-center justify-center mx-auto text-saffron text-2xl">
+                        <i class="fa-solid fa-dharmachakra diya-flame"></i>
+                    </div>
+                    <h2 class="font-rozha text-2xl text-saffron">Shri Naimishranya Tours & Travels</h2>
+                    <p class="text-[11px] text-gold uppercase tracking-widest font-semibold">Official Pilgrimage Booking Receipt / E-Ticket</p>
+                    <p class="text-[10px] text-gray-400">Near Chakra Tirtha Gate, Naimisharanya, Sitapur, UP • Helpline: +91 98765 43210</p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 text-xs">
+                    <div>
+                        <span class="text-gray-400 block">Receipt No / Order ID:</span>
+                        <strong class="text-saffron font-mono">${activePaymentDetails.orderId}</strong>
+                    </div>
+                    <div>
+                        <span class="text-gray-400 block">Transaction Status:</span>
+                        <strong class="text-green-400"><i class="fa-solid fa-circle-check"></i> PAID (Razorpay ${method})</strong>
+                    </div>
+                    <div>
+                        <span class="text-gray-400 block">Pilgrim Lead Name:</span>
+                        <strong class="text-white">${activePaymentDetails.yatriName}</strong>
+                    </div>
+                    <div>
+                        <span class="text-gray-400 block">Contact Mobile:</span>
+                        <strong class="text-white">${activePaymentDetails.phone}</strong>
+                    </div>
+                    <div>
+                        <span class="text-gray-400 block">Booked Service:</span>
+                        <strong class="text-saffron">${activePaymentDetails.serviceName}</strong>
+                    </div>
+                    <div>
+                        <span class="text-gray-400 block">Date of Booking/Service:</span>
+                        <strong class="text-white">${activePaymentDetails.date}</strong>
+                    </div>
+                </div>
+
+                <div class="glass-card p-4 rounded-xl flex items-center justify-between">
+                    <span class="text-sm font-bold text-gray-300">Total Amount Paid:</span>
+                    <span class="text-2xl font-bold text-gold font-rozha">₹${activePaymentDetails.amount.toLocaleString('en-IN')}</span>
+                </div>
+
+                <div class="text-[11px] text-gray-400 bg-saffron/10 border border-saffron/30 p-3 rounded-xl space-y-1">
+                    <p class="font-bold text-saffron"><i class="fa-solid fa-circle-info mr-1"></i> Important Pilgrim Instructions:</p>
+                    <p>• Please carry a printout or digital screenshot of this receipt upon arrival at Naimisharanya.</p>
+                    <p>• Our local yatra coordinator will contact you 2 hours prior to arrival.</p>
+                    <p>• For immediate pickup assistance, call +91 98765 43210.</p>
+                </div>
+            `;
+
+            document.getElementById('receiptContent').innerHTML = receiptHtml;
+            document.getElementById('printableReceiptModal').classList.remove('hidden');
+        }
+
+        function closeReceiptModal() {
+            document.getElementById('printableReceiptModal').classList.add('hidden');
+        }
+
+        function openNgoDonateModal() {
+            document.getElementById('ngoDonateModal').classList.remove('hidden');
+        }
+
+        function closeNgoDonateModal() {
+            document.getElementById('ngoDonateModal').classList.add('hidden');
+        }
+
+        function setNgoAmount(amt) {
+            document.getElementById('ngoCustomAmount').value = amt;
+        }
+
+        function processNgoDonation() {
+            const amt = parseInt(document.getElementById('ngoCustomAmount').value) || 1100;
+            closeNgoDonateModal();
+
+            activePaymentType = 'NGO';
+            activePaymentDetails = {
+                serviceName: 'Donation: Shri Naimishranya Jan Kalyan Samiti',
+                yatriName: 'Devoted Donor',
+                phone: '+91 9876543210',
+                amount: amt,
+                date: new Date().toISOString().split('T')[0]
+            };
+
+            openRazorpayModal();
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            showToast("Jai Shri Krishna! Your inquiry has been sent. Our team will call you shortly.");
+            e.target.reset();
+        }
+
+        window.onload = function() {
+            // Set default date picker values to tomorrow
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const dateStr = tomorrow.toISOString().split('T')[0];
+
+            if(document.getElementById('stayCheckin')) document.getElementById('stayCheckin').value = dateStr;
+            if(document.getElementById('travelDate')) document.getElementById('travelDate').value = dateStr;
+
+            // Initialize total calculations
+            calculateStayTotal();
+            calculateTravelTotal();
+        }
+    </script>
+</body>
+</html>
